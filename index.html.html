@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital San José Bonaventure — Dr. Daniel</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050a12;--bg2:#080f1c;--bg3:#0c1628;--panel:#0a1422;--panel2:#0d1a2e;--border:#1a3050;--border2:#0f2035;--teal:#00c8d4;--teal2:#007a85;--navy:#1a3a6b;--red:#ff2d4a;--red2:#c01530;--yellow:#ffd600;--green:#00e676;--green2:#00a854;--white:#e8f4ff;--muted:#4a6d8c;--text:#b8d4f0;--glow:0 0 20px rgba(0,200,212,0.3);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,200,212,0.012) 2px,rgba(0,200,212,0.012) 4px);pointer-events:none;z-index:9997;}
+header{background:linear-gradient(90deg,var(--bg3),#0a1830,var(--bg3));border-bottom:1px solid var(--teal2);padding:8px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 30px rgba(0,200,212,0.15);flex-wrap:wrap;gap:6px;}
+.hlogo{display:flex;align-items:center;gap:10px;}
+.hlogo svg{width:36px;height:36px;flex-shrink:0;}
+.hmain{font-family:'Orbitron',monospace;font-size:11px;font-weight:900;color:var(--teal);letter-spacing:2px;text-shadow:var(--glow);}
+.hsub{font-size:9px;color:var(--muted);letter-spacing:1px;font-family:'Share Tech Mono',monospace;}
+.hcenter{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.shift-b{padding:4px 10px;border-radius:20px;font-size:10px;font-family:'Share Tech Mono',monospace;font-weight:700;letter-spacing:1px;}
+.shift-day{background:rgba(255,214,0,0.15);color:var(--yellow);border:1px solid var(--yellow);}
+.shift-night{background:rgba(0,200,212,0.15);color:var(--teal);border:1px solid var(--teal);}
+.wx-b{padding:4px 10px;border-radius:20px;font-size:11px;background:rgba(255,255,255,0.07);border:1px solid var(--border);}
+.hright{display:flex;align-items:center;gap:10px;}
+.clk{font-family:'Orbitron',monospace;font-size:16px;font-weight:700;color:var(--white);}
+.ldot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pg 1.5s infinite;box-shadow:0 0 8px var(--green);}
+@keyframes pg{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.8);}}
+.upill{display:flex;align-items:center;gap:8px;background:rgba(0,200,212,0.1);border:1px solid var(--teal2);border-radius:6px;padding:5px 12px;}
+.urole{font-size:9px;color:var(--teal);font-family:'Share Tech Mono',monospace;}
+.uname{font-size:12px;color:var(--white);font-weight:700;}
+.repb{font-family:'Orbitron',monospace;font-size:10px;color:var(--yellow);}
+.nb-bar{display:flex;background:var(--bg3);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.nb-bar::-webkit-scrollbar{display:none;}
+.nb{padding:9px 13px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font-family:'Exo 2',sans-serif;font-size:11px;font-weight:600;letter-spacing:.5px;cursor:pointer;white-space:nowrap;transition:all .2s;text-transform:uppercase;}
+.nb:hover{color:var(--text);}
+.nb.active{color:var(--teal);border-bottom-color:var(--teal);background:rgba(0,200,212,0.05);}
+.wrap{padding:12px;max-width:1600px;margin:0 auto;}
+.sec{display:none;}.sec.active{display:block;}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:12px;}
+.card-hdr{padding:9px 14px;background:var(--panel2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.ct{font-family:'Orbitron',monospace;font-size:10px;font-weight:700;color:var(--teal);letter-spacing:2px;text-transform:uppercase;}
+.cb{padding:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px;}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:12px;}
+.gm{display:grid;grid-template-columns:2fr 1fr;gap:10px;}
+.sc{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;position:relative;overflow:hidden;}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),transparent);}
+.sc.red::before{background:linear-gradient(90deg,var(--red),transparent);}
+.sc.green::before{background:linear-gradient(90deg,var(--green),transparent);}
+.sc.yellow::before{background:linear-gradient(90deg,var(--yellow),transparent);}
+.scl{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-family:'Share Tech Mono',monospace;margin-bottom:6px;}
+.scv{font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:var(--white);line-height:1;}
+.scs{font-size:10px;color:var(--muted);margin-top:3px;}
+.sci{font-size:26px;position:absolute;right:14px;top:50%;transform:translateY(-50%);opacity:0.25;}
+.sb{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.sb.critico{background:rgba(255,45,74,0.15);color:var(--red);border:1px solid rgba(255,45,74,0.3);animation:br 1.5s infinite;}
+.sb.observacion{background:rgba(255,214,0,0.15);color:var(--yellow);border:1px solid rgba(255,214,0,0.3);}
+.sb.estable{background:rgba(0,230,118,0.15);color:var(--green);border:1px solid rgba(0,230,118,0.3);}
+@keyframes br{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.tbl{width:100%;border-collapse:collapse;font-size:11px;}
+.tbl th{padding:7px 10px;text-align:left;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--border);}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--border2);vertical-align:middle;}
+.tbl tr:hover td{background:rgba(0,200,212,0.04);cursor:pointer;}
+.btn{padding:5px 12px;border-radius:5px;font-family:'Exo 2',sans-serif;font-size:10px;font-weight:600;cursor:pointer;border:1px solid;transition:all .2s;}
+.bt{background:rgba(0,200,212,0.15);border-color:var(--teal2);color:var(--teal);}
+.bt:hover{background:rgba(0,200,212,0.3);}
+.br{background:rgba(255,45,74,0.15);border-color:var(--red2);color:var(--red);}
+.bg{background:rgba(0,230,118,0.15);border-color:var(--green2);color:var(--green);}
+.by{background:rgba(255,214,0,0.15);border-color:var(--yellow);color:var(--yellow);}
+.pb{background:var(--border2);border-radius:4px;height:5px;overflow:hidden;margin-top:3px;}
+.pf{height:100%;border-radius:4px;transition:width 1s;}
+.pf.t{background:var(--teal)}.pf.r{background:var(--red)}.pf.g{background:var(--green)}.pf.y{background:var(--yellow)}
+.ci{background:var(--panel);border-radius:6px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--border);cursor:pointer;transition:all .2s;animation:slin .4s ease;}
+.ci:hover{transform:translateX(4px);}
+.ci.p1{border-left-color:var(--red);background:rgba(255,45,74,0.05);}
+.ci.p2{border-left-color:var(--yellow);background:rgba(255,214,0,0.04);}
+.ci.p3{border-left-color:var(--teal);background:rgba(0,200,212,0.04);}
+.ci.p4{border-left-color:var(--muted);}
+@keyframes slin{from{transform:translateX(-16px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+.mo{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:500;align-items:center;justify-content:center;padding:16px;}
+.mo.active{display:flex;}
+.mbox{background:var(--bg3);border:1px solid var(--teal2);border-radius:12px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 0 60px rgba(0,200,212,0.25);}
+.mhdr{background:var(--panel2);padding:14px 18px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.mtitle{font-family:'Orbitron',monospace;font-size:12px;font-weight:700;color:var(--teal);letter-spacing:2px;}
+.mbody{padding:18px;}
+.dopt{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 16px;margin-bottom:8px;cursor:pointer;transition:all .2s;display:flex;align-items:flex-start;gap:10px;}
+.dopt:hover{border-color:var(--teal);background:rgba(0,200,212,0.08);}
+.donum{font-family:'Orbitron',monospace;font-size:16px;font-weight:900;color:var(--teal);min-width:24px;}
+.dotxt{font-size:12px;color:var(--white);line-height:1.5;}
+.dorisk{font-size:10px;color:var(--muted);margin-top:3px;}
+#cbo{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;align-items:center;justify-content:center;flex-direction:column;background:rgba(0,0,100,0.93);animation:cbf .6s infinite;}
+#cbo.active{display:flex;}
+@keyframes cbf{0%,100%{background:rgba(0,0,110,0.93);}50%{background:rgba(0,0,180,0.96);}}
+.cbmsg{font-family:'Orbitron',monospace;font-size:clamp(16px,4vw,32px);font-weight:900;color:#fff;letter-spacing:4px;text-align:center;animation:br .5s infinite;padding:0 20px;}
+.cbsub{font-family:'Share Tech Mono',monospace;font-size:clamp(11px,2vw,16px);color:#88aaff;margin-top:14px;text-align:center;padding:0 20px;letter-spacing:2px;}
+.cbt{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:14px 20px;margin-top:20px;min-width:280px;}
+.cbm{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px;font-family:'Share Tech Mono',monospace;}
+.cbdis{margin-top:20px;padding:10px 28px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);border-radius:6px;color:#fff;font-family:'Orbitron',monospace;font-size:11px;cursor:pointer;letter-spacing:2px;}
+.cbbtns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;justify-content:center;}
+.cbbtns .cbdis{margin-top:0;}
+#cb-status{color:#ffd600;margin-top:8px;}
+#cb-tint{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9997;pointer-events:none;background:rgba(0,60,255,0.28);animation:cbt .6s infinite;}
+body.cb-on #cb-tint{display:block;}
+@keyframes cbt{0%,100%{opacity:.15;}50%{opacity:1;}}
+#cbo.compact{bottom:auto;height:auto;padding:8px 12px;flex-direction:row;flex-wrap:wrap;gap:6px 14px;justify-content:center;}
+#cbo.compact .cbbig,#cbo.compact #cb-loc{display:none;}
+#cbo.compact .cbmsg{font-size:12px;letter-spacing:2px;padding:0;}
+#cbo.compact #cb-status{margin-top:0;font-size:10px;padding:0;}
+#cbo.compact .cbbtns{margin-top:0;}
+#cbo.compact .cbdis{padding:6px 12px;font-size:9px;}
+#cbo.compact #cb-chat-btn{display:none;}
+#cb-expand-btn{display:none;}
+#cbo.compact #cb-expand-btn{display:inline-block;}
+body.cb-compact{padding-top:64px;}
+.co:disabled{opacity:.5;cursor:default;}
+.nwrap{position:fixed;top:66px;right:12px;z-index:400;display:flex;flex-direction:column;gap:6px;max-width:300px;}
+.notif{background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:6px;padding:9px 12px;font-size:11px;animation:nin .3s ease,nou .3s ease 4.7s forwards;box-shadow:0 4px 20px rgba(0,0,0,0.4);cursor:pointer;}
+.notif.urgent{border-left-color:var(--red);}
+.notif.warn{border-left-color:var(--yellow);}
+.notif.success{border-left-color:var(--green);}
+.ntit{font-weight:700;color:var(--white);margin-bottom:2px;}
+.nmsg{color:var(--muted);}
+@keyframes nin{from{transform:translateX(100%);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes nou{from{transform:translateX(0);opacity:1;}to{transform:translateX(100%);opacity:0;}}
+.cms{height:320px;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.cmsg{display:flex;gap:8px;animation:slin .3s ease;}
+.cmsg.dan{flex-direction:row-reverse;}
+.cav{width:30px;height:30px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;border:1px solid var(--border);}
+.cbub{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:8px 12px;max-width:78%;}
+.cmsg.dan .cbub{background:rgba(0,200,212,0.1);border-color:var(--teal2);}
+.csen{font-size:9px;color:var(--teal);margin-bottom:2px;font-family:'Share Tech Mono',monospace;}
+.ctxt{font-size:11px;color:var(--text);line-height:1.5;}
+.ctm{font-size:9px;color:var(--muted);margin-top:3px;}
+.cro{display:flex;gap:6px;padding:8px 10px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.co{padding:5px 10px;background:rgba(0,200,212,0.1);border:1px solid var(--teal2);border-radius:4px;color:var(--teal);font-size:10px;cursor:pointer;font-family:'Share Tech Mono',monospace;transition:all .2s;}
+.co:hover{background:rgba(0,200,212,0.25);}
+.cir{display:flex;gap:8px;padding:10px;border-top:1px solid var(--border);}
+.cin{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:7px 11px;color:var(--white);font-family:'Exo 2',sans-serif;font-size:11px;outline:none;}
+.cin:focus{border-color:var(--teal);}
+.csend{background:var(--teal2);border:none;border-radius:6px;padding:7px 13px;color:#fff;cursor:pointer;font-size:13px;}
+.bgd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
+.bcard{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:12px;text-align:center;}
+.btype{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--red);}
+.bunits{font-size:20px;font-weight:700;color:var(--white);margin:4px 0;}
+.ach-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.ach{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;transition:all .3s;}
+.ach.un{border-color:var(--yellow);background:rgba(255,214,0,0.05);}
+.ach.lk{opacity:0.4;}
+.ai{font-size:28px;margin-bottom:6px;}
+.an{font-size:11px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.ad{font-size:9px;color:var(--muted);}
+.adate{font-size:9px;color:var(--yellow);margin-top:4px;font-family:'Share Tech Mono',monospace;}
+.ni{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start;}
+.nt{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--teal);min-width:45px;margin-top:2px;}
+.ntx{font-size:11px;color:var(--text);line-height:1.5;}
+.stg{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;font-family:'Share Tech Mono',monospace;margin-bottom:8px;}
+.stg.triste{background:rgba(255,45,74,0.15);color:var(--red);}
+.stg.feliz{background:rgba(0,230,118,0.15);color:var(--green);}
+.stg.normal{background:rgba(0,200,212,0.15);color:var(--teal);}
+.scard{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:10px;}
+.sname{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.sdet{font-size:11px;color:var(--muted);line-height:1.7;}
+.sr{display:flex;align-items:center;gap:10px;padding:8px 10px;background:var(--panel);border:1px solid var(--border);border-radius:6px;margin-bottom:6px;transition:all .2s;}
+.sr:hover{border-color:var(--teal);}
+.sav{width:34px;height:34px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.sn{font-size:12px;font-weight:600;color:var(--white);}
+.sa{font-size:10px;color:var(--muted);font-family:'Share Tech Mono',monospace;}
+.sdd{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sd-a{background:var(--green);box-shadow:0 0 6px var(--green);}
+.sd-b{background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
+.sd-r{background:var(--muted);}
+.vc{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px;overflow:hidden;}
+canvas.wave{width:100%;height:55px;display:block;}
+.fb{display:flex;justify-content:space-between;align-items:center;}
+.fr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.mb8{margin-bottom:8px;}.mb12{margin-bottom:12px;}
+.stitle{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.tag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;letter-spacing:1px;font-family:'Share Tech Mono',monospace;}
+.tag-r{background:rgba(255,45,74,0.15);color:var(--red);}
+.tag-y{background:rgba(255,214,0,0.15);color:var(--yellow);}
+.tag-g{background:rgba(0,230,118,0.15);color:var(--green);}
+.tag-t{background:rgba(0,200,212,0.15);color:var(--teal);}
+.tag-m{background:rgba(74,109,140,0.2);color:var(--muted);}
+.bc{background:rgba(0,230,118,0.06);border:1px solid rgba(0,230,118,0.25);border-radius:8px;padding:12px;margin-bottom:8px;}
+.abar{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.adots{display:flex;gap:5px;}
+.adot{width:11px;height:11px;border-radius:50%;background:var(--border);}
+.adot.v{background:var(--green);box-shadow:0 0 6px var(--green);}
+.adot.a{background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
+.adot.r{background:var(--red);box-shadow:0 0 6px var(--red);animation:pg .8s infinite;}
+.heli{font-size:40px;animation:hh 2s ease-in-out infinite;}
+@keyframes hh{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.sandboxbtn{background:rgba(255,214,0,0.1);border:1px solid var(--yellow);color:var(--yellow);padding:10px 16px;border-radius:6px;font-family:'Orbitron',monospace;font-size:10px;cursor:pointer;letter-spacing:1px;transition:all .2s;width:100%;margin-bottom:8px;text-align:left;}
+.sandboxbtn:hover{background:rgba(255,214,0,0.25);}
+@media(max-width:768px){.g4{grid-template-columns:repeat(2,1fr);}.g3{grid-template-columns:1fr 1fr;}.gm{grid-template-columns:1fr;}.bgd{grid-template-columns:repeat(4,1fr);}.ach-g{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.g4,.g3,.g2{grid-template-columns:1fr 1fr;}.gm{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hlogo">
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><rect x="13" y="2" width="10" height="32" rx="2" fill="#1a3a6b"/><rect x="2" y="13" width="32" height="10" rx="2" fill="#1a3a6b"/><path d="M18 7 C13 12,13 16,18 20 C23 24,23 28,18 34" stroke="#00c8d4" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>
+    <div><div class="hmain">HOSPITAL SAN JOSÉ BONAVENTURE</div><div class="hsub">SISTEMA CENTRAL — DR. DANIEL, ADMINISTRADOR GENERAL</div></div>
+  </div>
+  <div class="hcenter">
+    <span class="shift-b shift-day" id="shift-badge">☀️ TURNO DIURNO</span>
+    <span class="wx-b" id="wx-badge">☀️ Despejado</span>
+    <span class="repb" id="rep-disp">⭐ Reputación: 94/100</span>
+  </div>
+  <div class="hright">
+    <div style="display:flex;align-items:center;gap:5px;"><div class="ldot"></div><span style="font-size:9px;font-family:'Share Tech Mono',monospace;color:var(--green);">EN VIVO</span></div>
+    <div><div class="clk" id="clk">--:--:--</div><div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono',monospace;" id="ddisp">---</div></div>
+    <div class="upill"><div><div class="urole">ADMINISTRADOR GENERAL</div><div class="uname">👑 Dr. Daniel</div></div></div>
+  </div>
+</header>
+<div class="nb-bar">
+  <button class="nb active" onclick="showSec('dashboard',this)">⊞ Dashboard</button>
+  <button class="nb" onclick="showSec('crisis',this)">🚨 Crisis</button>
+  <button class="nb" onclick="showSec('pacientes',this)">👥 Pacientes</button>
+  <button class="nb" onclick="showSec('personal',this)">👨‍⚕️ Personal</button>
+  <button class="nb" onclick="showSec('ambulancias',this)">🚑 Ambulancias</button>
+  <button class="nb" onclick="showSec('maternidad',this)">👶 Maternidad</button>
+  <button class="nb" onclick="showSec('sangre',this)">🩸 Sangre</button>
+  <button class="nb" onclick="showSec('monitores',this)">📈 Monitores</button>
+  <button class="nb" onclick="showSec('aliados',this)">🏥 Aliados</button>
+  <button class="nb" onclick="showSec('logros',this)">🎖️ Logros</button>
+  <button class="nb" onclick="showSec('periodico',this)">📰 Periódico</button>
+  <button class="nb" onclick="showSec('chat',this)">💬 Chat</button>
+  <button class="nb" onclick="showSec('sandbox',this)">🛠️ Sandbox</button>
+</div>
+<div class="wrap">
+<!-- DASHBOARD -->
+<div id="sec-dashboard" class="sec active">
+  <div class="abar">
+    <div class="adots"><div class="adot" id="adot-v"></div><div class="adot" id="adot-a"></div><div class="adot" id="adot-r"></div></div>
+    <div><div style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono',monospace;letter-spacing:1px;">NIVEL DE ALERTA</div><div style="font-family:'Orbitron',monospace;font-size:12px;font-weight:700;" id="alt-txt">⚠ ALERTA AMARILLA</div></div>
+    <div style="flex:1;"></div>
+    <span id="emp-mes-h" style="font-size:10px;color:var(--yellow);">🏆 Empleado del mes: Dr. Shaun Murphy</span>
+  </div>
+  <div class="g4">
+    <div class="sc"><div class="scl">Pacientes Activos</div><div class="scv" id="d-pac">0</div><div class="scs">En el hospital</div><div class="sci">👥</div></div>
+    <div class="sc red"><div class="scl">Casos Críticos</div><div class="scv" style="color:var(--red)" id="d-crit">0</div><div class="scs">Atención inmediata</div><div class="sci">🔴</div></div>
+    <div class="sc green"><div class="scl">Camas Libres</div><div class="scv" style="color:var(--green)" id="d-beds">0</div><div class="scs">de 120 totales</div><div class="sci">🛏️</div></div>
+    <div class="sc yellow"><div class="scl">Ambulancias</div><div class="scv" style="color:var(--teal)" id="d-amb">4/6</div><div class="scs">en servicio</div><div class="sci">🚑</div></div>
+  </div>
+  <div class="gm">
+    <div>
+      <div class="card mb12"><div class="card-hdr"><span class="ct">⚡ Casos Críticos</span><span style="font-size:9px;color:var(--red);">TIEMPO REAL</span></div><div style="padding:0;overflow-x:auto;"><table class="tbl"><thead><tr><th>Paciente</th><th>Diagnóstico</th><th>Estado</th><th>Sala</th><th></th></tr></thead><tbody id="dash-ct"></tbody></table></div></div>
+      <div class="card"><div class="card-hdr"><span class="ct">📊 Ocupación</span></div><div class="cb" id="occ-bars"></div></div>
+    </div>
+    <div>
+      <div class="card mb12"><div class="card-hdr"><span class="ct">🚑 Ambulancias</span></div><div class="cb" style="padding:8px;" id="dash-ambs"></div></div>
+      <div class="card mb12"><div class="card-hdr"><span class="ct">🩸 Sangre Crítica</span></div><div class="cb" style="padding:8px;" id="dash-blood"></div></div>
+      <div class="card"><div class="card-hdr"><span class="ct">👶 Nacimientos</span></div><div class="cb" style="padding:8px;" id="dash-births"></div></div>
+    </div>
+  </div>
+</div>
+<!-- CRISIS -->
+<div id="sec-crisis" class="sec">
+  <div class="fb mb12"><div class="stitle" style="margin-bottom:0;">🚨 PANTALLA DE CRISIS</div><div style="font-size:10px;color:var(--muted);">Selecciona un evento para gestionar</div></div>
+  <div class="gm"><div id="crisis-list"></div><div>
+    <div class="card mb12"><div class="card-hdr"><span class="ct">📋 Registro de Acciones</span></div><div class="cb" style="padding:8px;max-height:300px;overflow-y:auto;" id="alog"></div></div>
+    <div class="card"><div class="card-hdr"><span class="ct">📊 Hoy</span></div><div class="cb"><div class="g2"><div style="text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;color:var(--teal);" id="st-ingr">0</div><div style="font-size:9px;color:var(--muted);">INGRESOS</div></div><div style="text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;color:var(--green);" id="st-alta">0</div><div style="font-size:9px;color:var(--muted);">ALTAS</div></div><div style="text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;color:var(--yellow);" id="st-cir">0</div><div style="font-size:9px;color:var(--muted);">CIRUGÍAS</div></div><div style="text-align:center;"><div style="font-family:'Orbitron',monospace;font-size:22px;font-weight:700;color:var(--red);" id="st-nac">0</div><div style="font-size:9px;color:var(--muted);">NACIMIENTOS</div></div></div></div></div>
+  </div></div>
+</div>
+<!-- PACIENTES -->
+<div id="sec-pacientes" class="sec">
+  <div class="stitle">👥 GESTIÓN DE PACIENTES</div>
+  <div class="card"><div class="card-hdr"><span class="ct">Lista de Pacientes</span><span style="font-size:9px;color:var(--muted);">Total: <span id="total-pac" style="color:var(--white);">0</span></span></div><div style="overflow-x:auto;"><table class="tbl"><thead><tr><th>ID</th><th>Nombre</th><th>Edad</th><th>Diagnóstico</th><th>Estado</th><th>Sala</th><th>Doctor</th><th>😊</th><th></th></tr></thead><tbody id="full-pact"></tbody></table></div></div>
+</div>
+<!-- PERSONAL -->
+<div id="sec-personal" class="sec">
+  <div class="stitle">👨‍⚕️ GESTIÓN DE PERSONAL</div>
+  <div class="gm"><div id="staff-full"></div><div>
+    <div class="card mb12"><div class="card-hdr"><span class="ct">🏆 Empleado del Mes</span></div><div class="cb" id="emp-panel"></div></div>
+    <div class="card"><div class="card-hdr"><span class="ct">📊 Por Área</span></div><div class="cb" id="staff-areas"></div></div>
+  </div></div>
+</div>
+<!-- AMBULANCIAS -->
+<div id="sec-ambulancias" class="sec"><div class="stitle">🚑 AMBULANCIAS</div><div class="g2" id="amb-full"></div></div>
+<!-- MATERNIDAD -->
+<div id="sec-maternidad" class="sec">
+  <div class="stitle">👶 MATERNIDAD</div>
+  <div class="gm"><div>
+    <div class="card mb12"><div class="card-hdr"><span class="ct">🍼 Nacimientos</span><span style="font-size:9px;color:var(--green);" id="birth-c">0</span></div><div class="cb" style="padding:8px;" id="birth-list"></div></div>
+  </div><div>
+    <div class="card mb12"><div class="card-hdr"><span class="ct">📊 Estadísticas</span></div><div class="cb"><div class="fb mb8"><span style="font-size:11px;">Normales</span><span id="bn" style="color:var(--green)">0</span></div><div class="fb mb8"><span style="font-size:11px;">Emergencias</span><span id="be" style="color:var(--red)">0</span></div><div class="fb"><span style="font-size:11px;">Bebés sanos</span><span id="bh" style="color:var(--teal)">0</span></div></div></div>
+    <div class="card"><div class="card-hdr"><span class="ct">👩‍⚕️ Equipo</span></div><div class="cb" style="font-size:11px;line-height:2.2;"><div>🩺 Dra. Elena Mendoza</div><div>👩‍⚕️ Enf. Patricia Lima</div><div>👶 Dr. Carlos Nieto</div></div></div>
+  </div></div>
+</div>
+<!-- SANGRE -->
+<div id="sec-sangre" class="sec"><div class="stitle">🩸 BANCO DE SANGRE</div><div class="bgd" id="blood-g"></div><div class="card"><div class="card-hdr"><span class="ct">Transfusiones Hoy</span></div><div class="cb" style="padding:8px;" id="tlog"></div></div></div>
+<!-- MONITORES -->
+<div id="sec-monitores" class="sec">
+  <div class="stitle">📈 MONITORES</div>
+  <div class="mb12"><label style="font-size:11px;color:var(--muted);margin-right:8px;">Paciente:</label><select id="mon-sel" onchange="updateMon()" style="background:var(--panel);border:1px solid var(--border);color:var(--white);padding:5px 10px;border-radius:4px;font-family:'Exo 2',sans-serif;font-size:11px;outline:none;"></select></div>
+  <div class="g2">
+    <div class="vc mb12"><div class="fb mb8"><span style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono',monospace;letter-spacing:2px;">❤️ FREC. CARDÍACA</span><span style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:var(--green);" id="m-hr">72</span><span style="font-size:10px;color:var(--muted);">bpm</span></div><canvas class="wave" id="w-hr"></canvas></div>
+    <div class="vc mb12"><div class="fb mb8"><span style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono',monospace;letter-spacing:2px;">🫁 SAT. O₂</span><span style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:var(--teal);" id="m-spo2">98</span><span style="font-size:10px;color:var(--muted);">%</span></div><canvas class="wave" id="w-spo2"></canvas></div>
+    <div class="vc"><div class="fb mb8"><span style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono',monospace;letter-spacing:2px;">🩸 PRESIÓN ART.</span><span style="font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:var(--yellow);" id="m-bp">120/80</span><span style="font-size:10px;color:var(--muted);">mmHg</span></div><canvas class="wave" id="w-bp"></canvas></div>
+    <div class="vc"><div class="fb mb8"><span style="font-size:9px;color:var(--muted);font-family:'Share Tech Mono',monospace;letter-spacing:2px;">🌡️ TEMPERATURA</span><span style="font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:var(--red);" id="m-temp">36.8</span><span style="font-size:10px;color:var(--muted);">°C</span></div><canvas class="wave" id="w-temp"></canvas></div>
+  </div>
+</div>
+<!-- ALIADOS -->
+<div id="sec-aliados" class="sec"><div class="stitle">🏥 HOSPITALES ALIADOS</div><div id="ally-list"></div><div class="card"><div class="card-hdr"><span class="ct">🚑 Traslados</span></div><div class="cb" style="padding:8px;" id="translog"></div></div></div>
+<!-- LOGROS -->
+<div id="sec-logros" class="sec"><div class="stitle">🎖️ VITRINA DE LOGROS</div><div class="ach-g" id="ach-g"></div></div>
+<!-- PERIÓDICO -->
+<div id="sec-periodico" class="sec"><div class="fb mb12"><div class="stitle" style="margin-bottom:0;">📰 PERIÓDICO</div><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);" id="paper-date">HOY</div></div><div id="news-list"></div></div>
+<!-- CHAT -->
+<div id="sec-chat" class="sec">
+  <div class="stitle">💬 COMUNICACIONES</div>
+  <div class="gm">
+    <div class="card">
+      <div class="card-hdr"><span class="ct">💬 Canal Hospital</span><span style="font-size:9px;color:var(--green);">● EN VIVO</span></div>
+      <div class="cms" id="chat-msgs"></div>
+      <div class="cro" id="chat-opts"></div>
+      <div class="cir"><input class="cin" id="chat-in" placeholder="Mensaje como Dr. Daniel..."/><button class="csend" onclick="sendMsg()">➤</button></div>
+    </div>
+    <div>
+      <div class="card mb12"><div class="card-hdr"><span class="ct">👥 En Turno</span></div><div class="cb" style="padding:8px;max-height:280px;overflow-y:auto;" id="on-duty"></div></div>
+      <div class="card"><div class="card-hdr"><span class="ct">📞 Llamadas</span></div><div class="cb" style="padding:8px;max-height:200px;overflow-y:auto;" id="call-log"></div></div>
+    </div>
+  </div>
+</div>
+<!-- SANDBOX -->
+<div id="sec-sandbox" class="sec">
+  <div class="stitle">🛠️ MODO SANDBOX</div>
+  <div class="g2">
+    <div class="card"><div class="card-hdr"><span class="ct">⚡ Forzar Eventos</span></div><div class="cb">
+      <button class="sandboxbtn" onclick="sbEvent('code_blue')">🚨 Activar Código Azul</button>
+      <button class="sandboxbtn" onclick="sbEvent('mass')">💥 Accidente Masivo (10 pacientes)</button>
+      <button class="sandboxbtn" onclick="sbEvent('birth')">👶 Forzar Nacimiento</button>
+      <button class="sandboxbtn" onclick="sbEvent('newpac')">🏥 Nuevo Paciente Emergencia</button>
+      <button class="sandboxbtn" onclick="sbEvent('blood')">🩸 Sangre O- Crítica</button>
+      <button class="sandboxbtn" onclick="sbEvent('vip')">👑 Paciente VIP</button>
+      <button class="sandboxbtn" onclick="sbEvent('storm')">⛈️ Clima: Tormenta</button>
+      <button class="sandboxbtn" onclick="sbEvent('ally')">🏥 Solicitud Hospital Aliado</button>
+    </div></div>
+    <div class="card"><div class="card-hdr"><span class="ct">⏰ Control de Tiempo</span></div><div class="cb">
+      <button class="sandboxbtn" onclick="simSh('day')">☀️ Simular Turno Diurno</button>
+      <button class="sandboxbtn" onclick="simSh('night')">🌙 Simular Turno Nocturno</button>
+      <button class="sandboxbtn" onclick="simSh('real')">🕐 Volver a Hora Real</button>
+      <div style="margin-top:12px;font-size:10px;color:var(--muted);">Guardado automático en localStorage.</div>
+      <button class="sandboxbtn" onclick="clearSv()" style="border-color:var(--red);color:var(--red);background:rgba(255,45,74,0.08);margin-top:8px;">🗑️ Borrar partida</button>
+    </div></div>
+  </div>
+</div>
+</div><!-- end wrap -->
+<!-- CODE BLUE OVERLAY -->
+<div id="cbo">
+  <div class="cbbig" style="font-size:60px;animation:hh .5s infinite;">🚨</div>
+  <div class="cbmsg">⚠ CÓDIGO AZUL ACTIVADO ⚠</div>
+  <div class="cbsub" id="cb-loc">PARO CARDIORRESPIRATORIO — EQUIPO INMEDIATO</div>
+  <div class="cbsub" id="cb-status"></div>
+  <div class="cbt cbbig" id="cb-team"></div>
+  <div class="cbbtns">
+    <button class="cbdis" onclick="deactCB()">✓ DESACTIVAR</button>
+    <button class="cbdis" onclick="cbSupport()" style="border-color:var(--yellow);color:var(--yellow);">+ APOYO EXTRA</button>
+    <button class="cbdis" id="cb-chat-btn" onclick="cbOpenChat()" style="border-color:var(--teal);color:var(--teal);">💬 ABRIR CHAT</button>
+    <button class="cbdis" id="cb-expand-btn" onclick="cbExpand()">⤢ PANTALLA COMPLETA</button>
+    <button class="cbdis" id="cb-audio-btn" onclick="cbAudioResume()" style="display:none;border-color:var(--green);color:var(--green);">🔊 ACTIVAR SONIDO</button>
+  </div>
+</div>
+<div id="cb-tint"></div>
+<!-- DECISION MODAL -->
+<div id="dec-mo" class="mo"><div class="mbox"><div class="mhdr"><span class="mtitle" id="dec-title">DECISIÓN</span><button onclick="closeDec()" style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;">✕</button></div><div class="mbody" id="dec-body"></div></div></div>
+<!-- PATIENT MODAL -->
+<div id="pac-mo" class="mo"><div class="mbox" style="max-width:520px;"><div class="mhdr"><span class="mtitle">📋 EXPEDIENTE</span><button onclick="closePM()" style="background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;">✕</button></div><div class="mbody" id="pac-body"></div></div></div>
+<!-- NOTIF -->
+<div class="nwrap" id="nwrap"></div>
+<script>
+// ========== STATE ==========
+const state = {
+  patients: [],
+  staff: [],
+  ambulances: [],
+  blood: { 'O+': 45, 'O-': 8, 'A+': 32, 'A-': 5, 'B+': 28, 'B-': 4, 'AB+': 12, 'AB-': 2 },
+  births: [],
+  messages: [],
+  crisisLog: [],
+  news: [],
+  achievements: [],
+  stats: { admissions: 0, discharges: 0, surgeries: 0, births: 0 },
+  alerts: 'yellow',
+  shift: 'day',
+  codeBlue: false,
+  waveT: 0,
+  waveAF: null,
+  pendingDecision: null,
+  chatOpts: [],
+  chatCtx: null,
+  chatQueue: [],
+  cbEvent: null,
+  extraBeds: 0,
+  reputation: 94,
+  simShift: 'real'
+};
+
+const ALLY_HOSPITALS = ['Hospital San Francisco','Centro de Salud','Hospital San Juan','Hospital Santo Domingo','Hospital DT GT'];
+const DIAGNOSES = ['Trauma craneoencefálico','Infarto agudo de miocardio','Neumonía bilateral','Apendicitis aguda','Fractura de cadera','Crisis asmática','ACV isquémico','Sepsis','Fractura tibial','Gastroenteritis severa','Contusión torácica','Politraumatismo','Insuficiencia cardíaca','Cetoacidosis diabética','Quemaduras graves'];
+const NAMES = ['Juan García','María López','Carlos Torres','Rosa Mendoza','Luis Pérez','Ana Silva','Miguel Ruiz','Elena Castro','Diego Morales','Sofía Vargas','Andrés Lima','Carmen Díaz','Roberto Núñez','Patricia Vega','Héctor Jiménez'];
+const BABY_NAMES = ['Valentina','Sebastián','Emilia','Mateo','Isabella','Santiago','Camila','Diego','Sofía','Alejandro'];
+const WEATHERS = ['☀️ Despejado','🌧️ Lluvia','⛈️ Tormenta','🌫️ Niebla'];
+const ADVISORS = [
+  {id:'shaun', name:'Dr. Shaun Murphy', icon:'🩺', role:'Diagnóstico Élite'},
+  {id:'andrews', name:'Dr. Marcus Andrews', icon:'🔬', role:'Cirujano Jefe'},
+  {id:'braun', name:'Dra. Audrey Braun', icon:'🏥', role:'Cirujana Trauma'},
+];
+
+let pidCounter = 1000;
+
+// ========== INIT ==========
+function init() {
+  loadState();
+  if (!state.patients.length) genPatients();
+  if (!state.staff.length) genStaff();
+  if (!state.ambulances.length) genAmbulances();
+  if (!state.births.length) genBirths();
+  if (!state.news.length) genNews();
+  if (!state.achievements.length) genAchievements();
+  if (!state.messages.length) seedChat();
+
+  updateClock();
+  updateHeader();
+  updateDashboard();
+  updateChat();
+  renderCrisis();
+  initWaves();
+
+  setInterval(updateClock, 1000);
+  setInterval(liveSimulation, 5000);
+  setInterval(() => { state.waveT += 0.15; animWaves(); }, 50);
+  setInterval(saveState, 8000);
+  setInterval(autoChatMsg, 20000);
+
+  notify('✅ Sistema iniciado — Hospital San José Bonaventure', 'success');
+  setTimeout(() => notify('👑 Bienvenido Dr. Daniel — Tienes el control total', ''), 1500);
+}
+
+// ========== SAVE / LOAD ==========
+function saveState() {
+  try {
+    const toSave = {
+      patients: state.patients.slice(-60),
+      blood: state.blood, births: state.births.slice(-20),
+      news: state.news.slice(-30), stats: state.stats,
+      achievements: state.achievements, reputation: state.reputation,
+      messages: state.messages.slice(-40),
+      crisisLog: state.crisisLog.slice(0, 40), extraBeds: state.extraBeds
+    };
+    localStorage.setItem('hospitalState', JSON.stringify(toSave));
+  } catch(e) {}
+}
+function loadState() {
+  try {
+    const d = JSON.parse(localStorage.getItem('hospitalState') || 'null');
+    if (d) {
+      if (d.patients && d.patients.length) state.patients = d.patients;
+      if (d.blood) state.blood = d.blood;
+      if (d.births && d.births.length) state.births = d.births;
+      if (d.news && d.news.length) state.news = d.news;
+      if (d.stats) state.stats = d.stats;
+      if (d.achievements && d.achievements.length) state.achievements = d.achievements;
+      if (d.reputation) state.reputation = d.reputation;
+      if (d.messages && d.messages.length) state.messages = d.messages;
+      if (Array.isArray(d.crisisLog)) state.crisisLog = d.crisisLog;
+      if (typeof d.extraBeds === 'number') state.extraBeds = d.extraBeds;
+    }
+  } catch(e) {}
+}
+function clearSv() {
+  if (confirm('¿Borrar toda la partida guardada?')) {
+    localStorage.removeItem('hospitalState');
+    location.reload();
+  }
+}
+
+// ========== DATA GENERATION ==========
+function genPatients() {
+  state.patients = [];
+  for (let i = 0; i < 12; i++) {
+    state.patients.push(makePatient());
+  }
+}
+function makePatient() {
+  const statuses = ['crítico','crítico','observación','observación','estable','estable'];
+  return {
+    id: 'P' + (pidCounter++),
+    name: NAMES[Math.floor(Math.random() * NAMES.length)],
+    age: 15 + Math.floor(Math.random() * 65),
+    diagnosis: DIAGNOSES[Math.floor(Math.random() * DIAGNOSES.length)],
+    status: statuses[Math.floor(Math.random() * statuses.length)],
+    room: ['Emergencias','UCI','Hospitalización','Pediatría','Cardiología'][Math.floor(Math.random()*5)] + '-' + String(Math.floor(Math.random()*20)+1).padStart(2,'0'),
+    doctor: ['Dr. Shaun Murphy','Dr. Andrews','Dra. Braun','Dr. García','Dra. Mendoza'][Math.floor(Math.random()*5)],
+    mood: ['😊','😐','😞','😠'][Math.floor(Math.random()*4)],
+    satisfaction: 40 + Math.floor(Math.random() * 60),
+    hr: 55 + Math.floor(Math.random() * 60),
+    spo2: 88 + Math.floor(Math.random() * 12),
+    bp: (100 + Math.floor(Math.random()*60)) + '/' + (60 + Math.floor(Math.random()*30)),
+    temp: (36 + Math.random() * 2).toFixed(1),
+    admitTime: tNow()
+  };
+}
+
+function genStaff() {
+  state.staff = [
+    { name: 'Dr. Shaun Murphy', role: 'Diagnóstico Élite', area: 'UCI', status: 'Disponible', icon: '🩺' },
+    { name: 'Dr. Marcus Andrews', role: 'Cirujano Jefe', area: 'Quirófano 1', status: 'Disponible', icon: '🔬' },
+    { name: 'Dra. Audrey Braun', role: 'Cirujana Trauma', area: 'Emergencias', status: 'Disponible', icon: '🏥' },
+    { name: 'Dr. Carlos Martínez', role: 'Médico Emergencias', area: 'Emergencias', status: 'Atendiendo paciente', icon: '👨‍⚕️' },
+    { name: 'Dra. Ana Sánchez', role: 'Intensivista', area: 'UCI', status: 'En ronda', icon: '👩‍⚕️' },
+    { name: 'Dr. Luis López', role: 'Cardiólogo', area: 'Cardiología', status: 'Disponible', icon: '❤️' },
+    { name: 'Dr. Raúl Torres', role: 'Cirujano', area: 'Quirófano 2', status: 'En cirugía', icon: '🔬' },
+    { name: 'Dra. Mónica Vega', role: 'Pediatra', area: 'Pediatría', status: 'Disponible', icon: '👶' },
+    { name: 'Dra. Elena Mendoza', role: 'Ginecóloga', area: 'Maternidad', status: 'Disponible', icon: '👩‍⚕️' },
+    { name: 'Dr. Pablo Herrera', role: 'Traumatólogo', area: 'Hospitalización', status: 'Revisando análisis', icon: '🦴' },
+    { name: 'Dra. Carmen Ruiz', role: 'Anestesióloga', area: 'Quirófano 1', status: 'En cirugía', icon: '💉' },
+    { name: 'Enf. García', role: 'Enfermera Jefe', area: 'UCI', status: 'Disponible', icon: '👩‍⚕️' },
+    { name: 'Enf. Jiménez', role: 'Enfermero UCI', area: 'UCI', status: 'Atendiendo paciente', icon: '🧑‍⚕️' },
+    { name: 'Enf. Patricia Lima', role: 'Matrona', area: 'Maternidad', status: 'Disponible', icon: '👩‍⚕️' },
+    { name: 'Enf. Roberto Cruz', role: 'Enf. Emergencias', area: 'Emergencias', status: 'En urgencias', icon: '🧑‍⚕️' },
+  ];
+}
+
+function genAmbulances() {
+  state.ambulances = [
+    { id: 'AMB-01', status: 'en_ruta', location: 'Av. Principal km 3', crew: 'Eduardo Ramírez' },
+    { id: 'AMB-02', status: 'disponible', location: 'Base Hospital', crew: 'Carmen Vega' },
+    { id: 'AMB-03', status: 'en_ruta', location: 'Zona Norte', crew: 'Luis Moreno' },
+    { id: 'AMB-04', status: 'disponible', location: 'Base Hospital', crew: 'Sandra Torres' },
+    { id: 'AMB-05', status: 'mantenimiento', location: 'Garaje', crew: 'Pedro Alonso' },
+    { id: 'AMB-06', status: 'disponible', location: 'Base Hospital', crew: 'Marta Quirós' }
+  ];
+}
+
+function genBirths() {
+  state.births = [
+    { id: 'B001', baby: 'Valentina', mother: 'Ana García', date: '09:30', weight: '3.2 kg', status: 'Normal', health: 'Sana y vigorosa' },
+    { id: 'B002', baby: 'Mateo', mother: 'Rosa López', date: '14:15', weight: '3.5 kg', status: 'Normal', health: 'Sano y vigoroso' }
+  ];
+  state.stats.births = 2;
+}
+
+function genNews() {
+  state.news = [
+    { text: '🏥 Hospital San José Bonaventure abre nuevo pabellón de emergencias.', time: tNow() },
+    { text: '🏆 Dr. Shaun Murphy reconocido como mejor diagnosticador del año.', time: tNow() },
+    { text: '🔬 Dr. Andrews completa cirugía cardíaca de alta complejidad con éxito.', time: tNow() },
+    { text: '👶 Se registraron 2 nacimientos durante la última guardia.', time: tNow() },
+  ];
+}
+
+function genAchievements() {
+  state.achievements = [
+    { icon: '🌟', name: 'Centenar de Vidas', desc: '100 pacientes atendidos', unlocked: false },
+    { icon: '🔬', name: 'Manos de Oro', desc: '50 cirugías exitosas', unlocked: false },
+    { icon: '💙', name: 'Guardián del Ritmo', desc: '25 Códigos Azules resueltos', unlocked: false },
+    { icon: '🚪', name: 'Liberador', desc: '100 altas médicas', unlocked: false },
+    { icon: '👶', name: 'Sala de Partos', desc: '50 nacimientos registrados', unlocked: false },
+    { icon: '🏆', name: 'Hospital de Excelencia', desc: 'Reputación 100/100', unlocked: state.reputation >= 100 },
+    { icon: '⭐', name: 'Primera Cirugía', desc: 'Primera cirugía completada', unlocked: true, date: '05/01/2025' },
+    { icon: '🍼', name: 'Milagro de Vida', desc: '5 nacimientos asistidos', unlocked: true, date: '15/03/2025' },
+  ];
+}
+
+function seedChat() {
+  state.messages = [
+    { sender: 'Dr. Shaun Murphy', icon: '🩺', role: 'Diagnóstico Élite', text: 'Buenos días Dr. Daniel. UCI al 88% de ocupación. Tres pacientes requieren evaluación urgente.', time: tNow() },
+    { sender: 'Dr. Marcus Andrews', icon: '🔬', role: 'Cirujano Jefe', text: 'Dr. Daniel, dos cirugías programadas esta mañana. Quirófanos 1 y 2 listos.', time: tNow() },
+    { sender: 'Dra. Audrey Braun', icon: '🏥', role: 'Cirujana Trauma', text: 'Llegaron dos pacientes de accidente de tránsito. Los evalúo en emergencias.', time: tNow() },
+  ];
+}
+
+// ========== LIVE SIMULATION ==========
+let simTick = 0;
+function liveSimulation() {
+  simTick++;
+  const isNight = isNightShift();
+  const chance = isNight ? 0.45 : 0.25;
+
+  // New random patient
+  if (Math.random() < chance && state.patients.length < 80) {
+    const p = makePatient();
+    state.patients.unshift(p);
+    state.stats.admissions++;
+    addNews('🏥 Nuevo ingreso: ' + p.name + ' — ' + p.diagnosis + ' — ' + p.status);
+    notify('🚑 Nuevo paciente: ' + p.name, 'urgent');
+    triggerDecisionModal(p);
+  }
+
+  // Status changes
+  if (state.patients.length && Math.random() < 0.35) {
+    const p = state.patients[Math.floor(Math.random() * state.patients.length)];
+    const old = p.status;
+    const roll = Math.random();
+    if (roll < 0.25 && p.status !== 'estable') { p.status = 'estable'; addNews('📈 Mejoría: ' + p.name + ' pasa a estado estable.'); }
+    else if (roll < 0.45 && p.status !== 'crítico') { p.status = 'crítico'; addNews('🔴 Deterioro: ' + p.name + ' en estado crítico.'); notify('🔴 Paciente crítico: ' + p.name, 'urgent'); if (!state.codeBlue && Math.random() < 0.4) offerConvo('critical', { pid: p.id }); }
+    else if (roll < 0.15) { dischargePatient(p); }
+  }
+
+  // Ambulance cycle
+  state.ambulances.forEach(a => {
+    if (a.status === 'disponible' && Math.random() < 0.12) {
+      a.status = 'en_ruta';
+      a.location = 'Zona ' + ['Norte','Sur','Centro','Este'][Math.floor(Math.random()*4)];
+      addNews('🚑 ' + a.id + ' despachada.');
+      if (!state.codeBlue && Math.random() < 0.25) offerConvo('ambulance', { amb: a.id });
+      setTimeout(() => {
+        a.status = 'disponible'; a.location = 'Base Hospital';
+        updateAmbulances();
+      }, 15000 + Math.random() * 10000);
+    }
+  });
+
+  // Blood fluctuation
+  Object.keys(state.blood).forEach(bt => {
+    state.blood[bt] = Math.max(2, state.blood[bt] + (Math.random() > 0.5 ? 1 : -1));
+    if (state.blood[bt] < 7) notify('🩸 Sangre ' + bt + ' crítica: solo ' + state.blood[bt] + ' U', 'urgent');
+  });
+
+  // Random birth
+  if (Math.random() < 0.06) addBirth();
+
+  // Random code blue
+  if (!state.codeBlue && Math.random() < (isNight ? 0.04 : 0.015)) {
+    const rooms = ['UCI-03','Emergencias-07','Hospitalización-12','Cardiología-05'];
+    activateCB(rooms[Math.floor(Math.random() * rooms.length)]);
+  }
+
+  // Staff movement
+  if (simTick % 3 === 0 && state.staff.length) {
+    const s = state.staff[Math.floor(Math.random() * state.staff.length)];
+    const areas = ['Emergencias','UCI','Quirófano 1','Radiología','Hospitalización','Pediatría'];
+    const acts = ['Atendiendo paciente','Revisando análisis','Disponible','En ronda','Trasladando paciente'];
+    s.area = areas[Math.floor(Math.random() * areas.length)];
+    s.status = acts[Math.floor(Math.random() * acts.length)];
+  }
+
+  // Advisor auto-action
+  if (simTick % 6 === 0) advisorAutoAction();
+
+  // Ally hospital
+  if (simTick % 12 === 0 && Math.random() < 0.5) allyRequest();
+
+  // Update vitals slightly
+  state.patients.forEach(p => {
+    p.hr = Math.max(40, Math.min(180, p.hr + (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * 3)));
+    p.spo2 = Math.max(80, Math.min(100, p.spo2 + (Math.random() > 0.6 ? 1 : -1)));
+    p.temp = Math.max(35, Math.min(42, parseFloat(p.temp) + (Math.random() > 0.7 ? 0.1 : -0.1))).toFixed(1);
+  });
+
+  // Stats counters UI
+  document.getElementById('st-ingr').textContent = state.stats.admissions;
+  document.getElementById('st-alta').textContent = state.stats.discharges;
+  document.getElementById('st-cir').textContent = state.stats.surgeries;
+  document.getElementById('st-nac').textContent = state.stats.births;
+
+  updateHeader();
+  updateDashboard();
+  renderCrisis();
+  updateAmbulances();
+  updateBancoSangre();
+  updateMaternidad();
+  if (document.getElementById('sec-periodico').classList.contains('active')) updatePeriodico();
+  if (document.getElementById('sec-pacientes').classList.contains('active')) updatePacientes();
+  if (document.getElementById('sec-personal').classList.contains('active')) updatePersonal();
+}
+
+function advisorAutoAction() {
+  if (state.codeBlue) return; // durante un Código Azul el equipo no distrae con otros asuntos
+  const r = Math.floor(Math.random() * 5);
+  const pname = state.patients[0] ? state.patients[0].name : 'paciente';
+  if (r === 1) { offerConvo('surgery', { kind: 'biopsia', name: pname }); return; }
+  if (r === 3) { offerConvo('beds', { occ: Math.max(70, bedsPct()) }); return; }
+  const infos = [
+    { who: 'andrews', msg: 'He reorganizado el personal de Emergencias para optimizar tiempos de respuesta.' },
+    { who: 'braun', msg: 'Habilitando sala temporal. Flujo de emergencias por encima de lo normal esta hora.' },
+    { who: 'shaun', msg: 'Cirugía de ' + pname + ' completada exitosamente.' }
+  ];
+  const a = infos[r === 0 ? 0 : r === 2 ? 1 : 2];
+  const s = STAFF_BOOK[a.who];
+  addChatMsg(s.name, s.icon, s.role, a.msg);
+  notify('🔔 ' + s.name + ': ' + a.msg.substring(0, 50) + '...', '');
+  addNews('🔔 ' + s.name + ': ' + a.msg);
+}
+
+function allyRequest() {
+  const ally = ALLY_HOSPITALS[Math.floor(Math.random() * ALLY_HOSPITALS.length)];
+  const reqs = ['solicita una cama UCI', 'transfiere un paciente crítico', 'solicita especialista de Cardiología', 'requiere sangre O-', 'envía 2 pacientes de accidente'];
+  const req = reqs[Math.floor(Math.random() * reqs.length)];
+  addNews('🏥 ' + ally + ' ' + req + '.');
+  notify('🏥 ' + ally + ': ' + req, 'warn');
+  offerConvo('ally', { ally, req });
+}
+
+// ========== BIRTHS ==========
+function addBirth(emergency = false) {
+  const mothers = ['Gloria Pérez','Marina Torres','Rosa Gómez','Ana López','Carmen Silva'];
+  const b = {
+    id: 'B' + Date.now(),
+    baby: BABY_NAMES[Math.floor(Math.random() * BABY_NAMES.length)],
+    mother: mothers[Math.floor(Math.random() * mothers.length)],
+    date: tNow(),
+    weight: (2.5 + Math.random() * 2).toFixed(2) + ' kg',
+    status: emergency ? 'Emergencia' : 'Normal',
+    health: Math.random() > 0.05 ? 'Sano y vigoroso' : 'Requiere observación'
+  };
+  state.births.unshift(b);
+  state.stats.births++;
+  addNews((emergency ? '⚠️' : '👶') + ' Nacimiento: ' + b.baby + ' — Madre: ' + b.mother + ' — ' + b.weight);
+  notify((emergency ? '⚠️ PARTO DE EMERGENCIA' : '👶 Nuevo nacimiento') + ': ' + b.baby + ' — ' + b.health, emergency ? 'urgent' : 'success');
+  addChatMsg('Dra. Elena Mendoza', '👩‍⚕️', 'Ginecóloga', '¡Parto exitoso! ' + b.mother + ' dio a luz a ' + b.baby + ' (' + b.weight + '). ' + b.health);
+  updateMaternidad();
+}
+
+// ========== CODE BLUE ==========
+// Motor de audio: una única alarma, sin límite de repeticiones, hasta que deactCB() la detenga.
+const CBAudio = { ctx: null, iv: null, step: 0, nodes: new Set() };
+const CB_POOL = [
+  { name: 'Dr. Marcus Andrews', role: 'Cirujano de apoyo', eta: '02:15' },
+  { name: 'Enf. Roberto Cruz', role: 'Enf. Emergencias', eta: '01:40' },
+  { name: 'Dra. Audrey Braun', role: 'Cirujana Trauma', eta: '02:50' },
+  { name: 'Dra. Carmen Ruiz', role: 'Anestesióloga', eta: '03:05' },
+  { name: 'Dr. Luis López', role: 'Cardiólogo', eta: '03:20' }
+];
+
+function cbAudioEnsure() {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return null;
+  if (!CBAudio.ctx || CBAudio.ctx.state === 'closed') {
+    try { CBAudio.ctx = new AC(); } catch (e) { CBAudio.ctx = null; return null; }
+  }
+  return CBAudio.ctx;
+}
+
+// Se llama desde el botón «ACTIVAR SONIDO» y desde cualquier primera interacción del usuario.
+function cbAudioResume() {
+  if (!state.codeBlue) return;
+  const ctx = cbAudioEnsure();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') {
+    const p = ctx.resume();
+    if (p && p.then) p.then(updateCBAudioUI, updateCBAudioUI);
+  }
+  updateCBAudioUI();
+}
+
+function updateCBAudioUI() {
+  const b = document.getElementById('cb-audio-btn');
+  if (!b) return;
+  const blocked = state.codeBlue && (!CBAudio.ctx || CBAudio.ctx.state !== 'running');
+  b.style.display = blocked ? '' : 'none';
+}
+
+function cbBeep() {
+  if (!state.codeBlue) { stopCBAlarm(); return; }
+  const ctx = cbAudioEnsure();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') { try { const p = ctx.resume(); if (p && p.catch) p.catch(() => {}); } catch (e) {} }
+  updateCBAudioUI();
+  if (ctx.state !== 'running') return; // el navegador aún no autoriza el audio: el intervalo sigue vivo
+  try {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    const t = ctx.currentTime;
+    o.type = 'square';
+    o.frequency.value = CBAudio.step % 2 === 0 ? 880 : 660;
+    CBAudio.step++;
+    g.gain.setValueAtTime(0.2, t);
+    g.gain.setValueAtTime(0.0001, t + 0.18);
+    o.connect(g); g.connect(ctx.destination);
+    o.onended = () => { CBAudio.nodes.delete(o); try { o.disconnect(); g.disconnect(); } catch (e) {} };
+    CBAudio.nodes.add(o);
+    o.start(t); o.stop(t + 0.18);
+  } catch (e) {}
+}
+
+function playCBAlarm() {
+  if (CBAudio.iv) return; // ya está sonando: nunca se apilan alarmas
+  CBAudio.step = 0;
+  CBAudio.iv = setInterval(cbBeep, 400);
+  cbBeep();
+}
+
+function stopCBAlarm() {
+  if (CBAudio.iv) { clearInterval(CBAudio.iv); CBAudio.iv = null; }
+  CBAudio.nodes.forEach(o => { try { o.onended = null; o.stop(); o.disconnect(); } catch (e) {} });
+  CBAudio.nodes.clear();
+  const ctx = CBAudio.ctx;
+  CBAudio.ctx = null;
+  if (ctx && ctx.state !== 'closed') {
+    try { const p = ctx.close(); if (p && p.catch) p.catch(() => {}); } catch (e) {}
+  }
+  updateCBAudioUI();
+}
+
+// Primera interacción del usuario: desbloquea el audio si hay un Código Azul esperando.
+['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+  document.addEventListener(ev, () => { if (state.codeBlue) cbAudioResume(); }, { passive: true })
+);
+
+function renderCBTeam() {
+  const el = document.getElementById('cb-team');
+  const ev = state.cbEvent;
+  if (!el || !ev) return;
+  el.innerHTML = ev.team.map(s =>
+    `<div class="cbm"><span style="color:var(--green);">✅</span> ${esc(s.name)} — ${esc(s.role)} <span style="color:var(--yellow);margin-left:auto;">${esc(s.eta)}</span></div>`
+  ).join('');
+}
+
+function setCBStatus() {
+  const el = document.getElementById('cb-status');
+  const ev = state.cbEvent;
+  if (!el || !ev) return;
+  el.textContent = (ev.authorized ? 'PROTOCOLO COMPLETO AUTORIZADO' : 'ESPERANDO AUTORIZACIÓN DEL PROTOCOLO') + ' · EQUIPO EN SITIO: ' + ev.team.length;
+}
+
+function addCBMember(m) {
+  const ev = state.cbEvent;
+  if (!ev || ev.team.some(x => x.name === m.name)) return false;
+  ev.team.push({ name: m.name, role: m.role, eta: m.eta });
+  return true;
+}
+
+// Añade hasta n refuerzos que todavía no estén en el equipo (sin duplicar integrantes).
+function addCBSupportWave(n) {
+  const added = [];
+  for (const m of CB_POOL) {
+    if (added.length >= n) break;
+    if (addCBMember(m)) added.push(m.name);
+  }
+  renderCBTeam(); setCBStatus();
+  return added;
+}
+
+function activateCB(location) {
+  if (state.codeBlue) { notify('🚨 Ya hay un Código Azul activo', 'warn'); return false; }
+  const loc = location || 'UCI-03';
+  const crit = state.patients.filter(p => p.status === 'crítico');
+  const pat = crit.length ? crit[Math.floor(Math.random() * crit.length)] : state.patients[0];
+  const rhythms = ['fibrilación ventricular', 'asistolia', 'actividad eléctrica sin pulso'];
+  const ev = {
+    id: 'CB' + Date.now(),
+    location: loc,
+    start: Date.now(),
+    patient: pat ? { name: pat.name, age: pat.age, dx: pat.diagnosis } : { name: 'Paciente no identificado', age: '—', dx: 'causa en estudio' },
+    rhythm: rhythms[Math.floor(Math.random() * rhythms.length)],
+    authorized: false, reviewed: 0, supportWaves: 0, progress: 0, used: {},
+    team: state.staff.slice(0, 5).map(s => ({ name: s.name, role: s.role, eta: (Math.floor(Math.random() * 3) + 1) + ':' + String(Math.floor(Math.random() * 59)).padStart(2, '0') }))
+  };
+  state.cbEvent = ev;
+  state.codeBlue = true;
+  document.body.classList.add('cb-on');
+  document.body.classList.remove('cb-compact');
+  const o = document.getElementById('cbo');
+  o.classList.remove('compact');
+  o.classList.add('active');
+  document.getElementById('cb-loc').textContent = 'PARO CARDIORRESPIRATORIO — ' + loc;
+  renderCBTeam(); setCBStatus();
+  playCBAlarm();
+  updateCBAudioUI();
+  addNews('🚨 CÓDIGO AZUL activado en ' + loc + '. Equipo de respuesta movilizado.');
+  logAction('Código Azul activado en ' + loc + ' — ' + ev.patient.name + '.');
+  notify('🚨 CÓDIGO AZUL — ' + loc + ' · Abra el chat para decidir', 'urgent');
+  renderCrisis();
+  offerConvo('codeblue', { eventId: ev.id }, { force: true });
+  return true;
+}
+
+function deactCB() {
+  if (!state.codeBlue) return;
+  const ev = state.cbEvent;
+  state.codeBlue = false;
+  state.cbEvent = null;
+  stopCBAlarm();
+  document.body.classList.remove('cb-on', 'cb-compact');
+  document.getElementById('cbo').classList.remove('active', 'compact');
+  // Cierra la conversación del Código Azul y libera las que quedaron en espera.
+  if (state.chatCtx && state.chatCtx.type === 'codeblue') state.chatCtx = null;
+  state.chatOpts = [];
+  renderChatOpts();
+  state.stats.codeBlues = (state.stats.codeBlues || 0) + 1;
+  const name = ev ? ev.patient.name : 'El paciente';
+  let msgs;
+  if (ev && ev.authorized) {
+    state.reputation = Math.min(100, state.reputation + (ev.progress >= 1 ? 1 : 0));
+    addNews('✅ Código Azul desactivado. ' + name + ' estabilizado.');
+    logAction('Código Azul cerrado por Dr. Daniel. ' + name + (ev.used.transfer ? ' trasladado a UCI.' : ' estabilizado en el sitio.'));
+    notify('✅ Código Azul desactivado — Situación controlada', 'success');
+    msgs = [
+      ['shaun', 'Código Azul resuelto. ' + name + (ev.used.transfer ? ' estabilizado y trasladado a UCI.' : ' estabilizado; queda en vigilancia estrecha en el sitio.') + ' Gracias, Dr. Daniel.'],
+      ['sanchez', ev.used.transfer ? 'UCI recibe al paciente con monitoreo completo.' : 'Preparo una cama de UCI por si requiere traslado.']
+    ];
+  } else {
+    state.reputation = Math.max(0, state.reputation - 1);
+    addNews('⚠️ Código Azul cerrado sin protocolo completo autorizado.');
+    logAction('Código Azul cerrado por Dr. Daniel sin autorizar el protocolo completo.');
+    notify('⚠️ Código Azul cerrado sin protocolo completo', 'warn');
+    msgs = [
+      ['shaun', 'Código Azul cerrado sin protocolo completo. ' + name + ' queda en vigilancia intensiva; dejo constancia en el registro.'],
+      ['garcia', 'Retiramos el carro de paros y reasignamos al equipo a sus áreas.']
+    ];
+  }
+  qPush(msgs.map(([k, t]) => msgItem(k, t, null)));
+  renderCrisis();
+  setTimeout(releaseQueue, 3500);
+}
+
+// «+ APOYO EXTRA»: suma un refuerzo al equipo. NO toca la alarma ni el estado de la crisis.
+function cbSupport() {
+  const ev = state.cbEvent;
+  if (!state.codeBlue || !ev) return;
+  const added = addCBSupportWave(1);
+  if (!added.length) { notify('ℹ️ Todo el apoyo disponible ya está en el equipo', ''); return; }
+  logAction('Apoyo extra enviado al Código Azul de ' + ev.location + ': ' + added[0] + '.');
+  notify('🩺 Apoyo adicional enviado — ' + added[0] + ' en camino', 'success');
+  const s = Object.values(STAFF_BOOK).find(x => x.name === added[0]);
+  if (s) addChatMsg(s.name, s.icon, s.role, 'Me incorporo al Código Azul en ' + ev.location + '. Llego en unos minutos.');
+}
+
+function cbOpenChat() {
+  document.getElementById('cbo').classList.add('compact');
+  document.body.classList.add('cb-compact');
+  const btn = Array.from(document.querySelectorAll('.nb')).find(b => /showSec\('chat'/.test(b.getAttribute('onclick') || ''));
+  if (btn) showSec('chat', btn);
+}
+function cbExpand() {
+  document.getElementById('cbo').classList.remove('compact');
+  document.body.classList.remove('cb-compact');
+}
+
+// ========== DECISIONS ==========
+function triggerDecisionModal(p) {
+  const opts = [
+    { text: 'Enviar a ' + (p.status === 'crítico' ? 'UCI' : 'Hospitalización') + ' de inmediato', risk: 'Acción rápida. Consume cama disponible.' },
+    { text: 'Solicitar más estudios y análisis', risk: 'Mejor diagnóstico. Pequeña demora.' },
+    { text: 'Mantener en observación en Emergencias', risk: 'Ahorra recursos. Puede empeorar.' },
+  ];
+  document.getElementById('dec-title').textContent = 'NUEVO PACIENTE — ' + p.name;
+  document.getElementById('dec-body').innerHTML =
+    '<div style="background:rgba(0,200,212,0.08);border:1px solid var(--teal2);border-radius:8px;padding:12px;margin-bottom:14px;">' +
+    '<div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">' + p.name + ' — ' + p.age + ' años</div>' +
+    '<div style="font-size:11px;color:var(--yellow);">' + p.diagnosis + '</div>' +
+    '<div style="font-size:11px;margin-top:4px;">' + sbHTML(p.status) + '</div></div>' +
+    opts.map((o, i) =>
+      `<div class="dopt" onclick="handleDec(${i},'${p.id}')"><span class="donum">${i+1}</span><div><div class="dotxt">${o.text}</div><div class="dorisk">${o.risk}</div></div></div>`
+    ).join('');
+  document.getElementById('dec-mo').classList.add('active');
+}
+
+function handleDec(i, pid) {
+  closeDec();
+  const p = state.patients.find(x => x.id === pid);
+  if (i === 0) { notify('✅ Paciente asignado correctamente', 'success'); state.reputation = Math.min(100, state.reputation + 0.5); }
+  else if (i === 1) { notify('ℹ️ Paciente en estudios — espere resultados', ''); }
+  else { notify('⚠️ Paciente en observación — monitorear de cerca', 'warn'); }
+  const nm = p ? p.name : 'el paciente';
+  if (i === 0 && p) p.room = (p.status === 'crítico' ? 'UCI' : 'Hospitalización') + '-' + String(Math.floor(Math.random() * 16) + 1).padStart(2, '0');
+  if (i === 0) say('sanchez', nm + ' ya está en ' + (p ? p.room : 'cama asignada') + ' con monitor conectado. Quedo pendiente de su evolución.');
+  else if (i === 1) say('shaun', 'Solicito laboratorio e imagen para ' + nm + '; tendré resultados en unos 20 minutos.');
+  else say('martinez', nm + ' queda en observación en Emergencias con control de signos cada 15 minutos.');
+  addNews('🧾 Decisión de ingreso para ' + nm + ': ' + ['traslado inmediato', 'estudios adicionales', 'observación en Emergencias'][i] + '.');
+}
+
+function closeDec() { document.getElementById('dec-mo').classList.remove('active'); }
+function closePM() { document.getElementById('pac-mo').classList.remove('active'); }
+
+// ========== PATIENT MODAL ==========
+function openPatient(id) {
+  const p = state.patients.find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('pac-body').innerHTML =
+    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);">' +
+    '<div style="width:46px;height:46px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:22px;">👤</div>' +
+    '<div><div style="font-size:17px;font-weight:700;color:var(--white);">' + p.name + '</div>' +
+    '<div style="font-size:10px;color:var(--muted);">' + p.id + ' — ' + p.age + ' años</div></div>' +
+    '<div style="margin-left:auto;">' + sbHTML(p.status) + '</div></div>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">' +
+    '<div><div style="font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Diagnóstico</div><div style="font-size:12px;color:var(--white);">' + p.diagnosis + '</div></div>' +
+    '<div><div style="font-size:9px;color:var(--muted);">Sala</div><div style="font-size:12px;color:var(--teal);">' + p.room + '</div></div>' +
+    '<div><div style="font-size:9px;color:var(--muted);">Doctor</div><div style="font-size:12px;">' + p.doctor + '</div></div>' +
+    '<div><div style="font-size:9px;color:var(--muted);">Ingreso</div><div style="font-size:12px;">' + (p.admitTime || '--') + '</div></div></div>' +
+    '<div style="background:rgba(0,200,212,0.06);border:1px solid var(--border);border-radius:6px;padding:10px;margin-bottom:10px;font-size:11px;">' +
+    '❤️ <strong>' + p.hr + '</strong> bpm &nbsp; 🫁 <strong>' + p.spo2 + '</strong>% &nbsp; 🩸 <strong>' + p.bp + '</strong> mmHg &nbsp; 🌡️ <strong>' + p.temp + '</strong>°C</div>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">' +
+    '<button class="btn bg" onclick="closePM()">✅ Dar Alta</button>' +
+    '<button class="btn by" onclick="improvePat(\'' + p.id + '\')">📈 Mejorar Estado</button>' +
+    '<button class="btn br" onclick="closePM()">✕ Cerrar</button></div>' +
+    (p.satisfaction < 40 ?
+    '<div style="background:rgba(255,214,0,0.08);border:1px solid var(--yellow);border-radius:8px;padding:12px;">' +
+    '<div style="font-size:12px;color:var(--yellow);font-weight:700;margin-bottom:8px;">😠 Paciente insatisfecho</div>' +
+    '<div style="font-size:11px;margin-bottom:8px;">"Llevo horas esperando. Esto es inaceptable."</div>' +
+    '<div style="display:flex;gap:6px;flex-wrap:wrap;">' +
+    '<button class="btn bg" style="font-size:9px;" onclick="handleComplaint(\'' + p.id + '\',\'apology\')">😊 Disculpas y prioridad</button>' +
+    '<button class="btn by" style="font-size:9px;" onclick="handleComplaint(\'' + p.id + '\',\'explain\')">ℹ️ Explicar situación</button>' +
+    '<button class="btn bt" style="font-size:9px;" onclick="handleComplaint(\'' + p.id + '\',\'patience\')">⏳ Pedir paciencia</button>' +
+    '</div></div>' : '');
+  document.getElementById('pac-mo').classList.add('active');
+}
+
+function handleComplaint(id, type) {
+  const p = state.patients.find(x => x.id === id);
+  if (!p) return;
+  if (type === 'apology') { p.satisfaction = Math.min(100, p.satisfaction + 30); notify('😊 ' + p.name + ' satisfecho', 'success'); }
+  else if (type === 'explain') { p.satisfaction = Math.min(100, p.satisfaction + 15); notify('ℹ️ ' + p.name + ' comprende la situación', ''); }
+  else { notify('⏳ ' + p.name + ' acepta esperar', 'warn'); }
+  closePM();
+}
+
+function improvePat(id) {
+  const p = state.patients.find(x => x.id === id);
+  if (p) { p.status = 'estable'; p.satisfaction = Math.min(100, p.satisfaction + 25); notify('📈 Mejoría: ' + p.name + ' — estado estable', 'success'); }
+  closePM();
+}
+
+function dischargePatient(p) {
+  state.patients = state.patients.filter(x => x.id !== p.id);
+  state.stats.discharges++;
+  addNews('✅ Alta médica: ' + p.name + ' — ' + p.diagnosis);
+  notify('✅ Alta: ' + p.name, 'success');
+}
+
+// ========== CLOCK ==========
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clk').textContent = now.toLocaleTimeString('es-ES');
+  document.getElementById('ddisp').textContent = now.toLocaleDateString('es-ES', { weekday: 'short', month: 'short', day: 'numeric' }).toUpperCase();
+  const h = now.getHours();
+  const autoNight = h >= 18 || h < 6;
+  const isNight = state.simShift === 'night' || (state.simShift === 'real' && autoNight);
+  state.shift = isNight ? 'night' : 'day';
+  document.getElementById('shift-badge').textContent = isNight ? '🌙 TURNO NOCTURNO' : '☀️ TURNO DIURNO';
+  document.getElementById('shift-badge').className = 'shift-b ' + (isNight ? 'shift-night' : 'shift-day');
+}
+
+function isNightShift() { return state.shift === 'night'; }
+
+// ========== HEADER ==========
+function updateHeader() {
+  const critical = state.patients.filter(p => p.status === 'crítico').length;
+  let alertTxt = '✅ CÓDIGO VERDE', alertColor = 'var(--green)';
+  document.getElementById('adot-v').className = 'adot v';
+  document.getElementById('adot-a').className = 'adot';
+  document.getElementById('adot-r').className = 'adot';
+  if (critical >= 5) {
+    alertTxt = '🔴 ALERTA ROJA'; alertColor = 'var(--red)';
+    document.getElementById('adot-v').className = 'adot v';
+    document.getElementById('adot-a').className = 'adot a';
+    document.getElementById('adot-r').className = 'adot r';
+  } else if (critical >= 2) {
+    alertTxt = '⚠ ALERTA AMARILLA'; alertColor = 'var(--yellow)';
+    document.getElementById('adot-v').className = 'adot v';
+    document.getElementById('adot-a').className = 'adot a';
+  }
+  const el = document.getElementById('alt-txt');
+  if (el) { el.textContent = alertTxt; el.style.color = alertColor; }
+  document.getElementById('rep-disp').textContent = '⭐ Reputación: ' + Math.round(state.reputation) + '/100';
+}
+
+// ========== DASHBOARD ==========
+function updateDashboard() {
+  const critical = state.patients.filter(p => p.status === 'crítico');
+  document.getElementById('d-pac').textContent = state.patients.length;
+  document.getElementById('d-crit').textContent = critical.length;
+  document.getElementById('d-beds').textContent = Math.max(0, 120 - state.patients.length);
+  const actAmb = state.ambulances.filter(a => a.status !== 'mantenimiento').length;
+  document.getElementById('d-amb').textContent = actAmb + '/6';
+
+  // Critical table
+  document.getElementById('dash-ct').innerHTML = critical.slice(0, 5).map(p =>
+    `<tr onclick="openPatient('${p.id}')"><td style="color:var(--white);font-weight:600;">${p.name}</td><td style="font-size:10px;">${p.diagnosis}</td><td>${sbHTML(p.status)}</td><td style="color:var(--teal);font-size:10px;">${p.room}</td><td><button class="btn bt" style="padding:2px 8px;" onclick="event.stopPropagation();openPatient('${p.id}')">Ver</button></td></tr>`
+  ).join('') || '<tr><td colspan="5" style="color:var(--muted);text-align:center;padding:14px;">Sin casos críticos ✅</td></tr>';
+
+  // Occ bars
+  const depts = [
+    { n: 'UCI', pct: Math.min(100, Math.round(critical.length / (16 + (state.extraBeds || 0)) * 100)) },
+    { n: 'Emergencias', pct: Math.min(100, Math.round(state.patients.filter(p => p.room.includes('Emergencias')).length / 20 * 100)) },
+    { n: 'General', pct: Math.min(100, Math.round(state.patients.length / 120 * 100)) },
+    { n: 'Quirófanos', pct: 30 + Math.floor(Math.random() * 40) }
+  ];
+  document.getElementById('occ-bars').innerHTML = depts.map(d =>
+    `<div style="margin-bottom:10px;"><div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:11px;">${d.n}</span><span style="font-size:10px;color:${d.pct > 85 ? 'var(--red)' : d.pct > 60 ? 'var(--yellow)' : 'var(--teal)'};">${d.pct}%</span></div><div class="pb"><div class="pf ${d.pct > 85 ? 'r' : d.pct > 60 ? 'y' : 't'}" style="width:${d.pct}%"></div></div></div>`
+  ).join('');
+
+  // Ambulances mini
+  document.getElementById('dash-ambs').innerHTML = state.ambulances.map(a =>
+    `<div style="display:flex;align-items:center;gap:8px;padding:5px;border-bottom:1px solid var(--border2);"><span>🚑</span><div style="flex:1;"><div style="font-size:10px;color:var(--white);font-weight:600;">${a.id}</div><div style="font-size:9px;color:var(--muted);">${a.location}</div></div><span style="font-size:9px;font-weight:700;color:${a.status==='disponible'?'var(--green)':a.status==='en_ruta'?'var(--yellow)':'var(--muted)'}">${a.status.toUpperCase()}</span></div>`
+  ).join('');
+
+  // Blood mini (critical only)
+  const critBlood = Object.entries(state.blood).filter(([,u]) => u < 15);
+  document.getElementById('dash-blood').innerHTML = critBlood.length
+    ? critBlood.slice(0, 4).map(([t, u]) => `<div style="display:flex;align-items:center;gap:8px;padding:5px;border-bottom:1px solid var(--border2);"><span style="font-family:'Orbitron',monospace;font-size:13px;color:var(--red);min-width:28px;">${t}</span><div class="pb" style="flex:1;"><div class="pf r" style="width:${Math.min(100,u*5)}%"></div></div><span style="font-size:10px;color:${u<8?'var(--red)':'var(--yellow)'};">${u}U</span></div>`).join('')
+    : '<div style="font-size:10px;color:var(--green);padding:8px;">✅ Todos en nivel adecuado</div>';
+
+  // Births mini
+  document.getElementById('dash-births').innerHTML = state.births.slice(0, 3).map(b =>
+    `<div style="display:flex;gap:8px;padding:5px;border-bottom:1px solid var(--border2);font-size:10px;"><span>👶</span><div><span style="color:var(--white);font-weight:600;">${b.baby}</span> — ${b.mother}<div style="color:var(--muted);font-size:9px;">${b.date} — ${b.weight}</div></div></div>`
+  ).join('') || '<div style="color:var(--muted);font-size:10px;padding:8px;">Sin nacimientos recientes</div>';
+}
+
+// ========== CRISIS SCREEN ==========
+const crisisEvents = [];
+function renderCrisis() {
+  // Build events from state
+  const events = [];
+  if (state.codeBlue) events.push({ prio: 1, icon: '🚨', text: 'CÓDIGO AZUL ACTIVO', type: 'cb' });
+  state.patients.filter(p => p.status === 'crítico').slice(0, 5).forEach(p => {
+    events.push({ prio: 2, icon: '🔴', text: 'Paciente crítico: ' + p.name + ' — ' + p.diagnosis, pid: p.id, type: 'pac' });
+  });
+  Object.entries(state.blood).filter(([,u]) => u < 8).forEach(([t]) => {
+    events.push({ prio: 2, icon: '🩸', text: 'Sangre ' + t + ' crítica', type: 'blood', bt: t });
+  });
+  if (state.ambulances.filter(a => a.status === 'disponible').length === 0) {
+    events.push({ prio: 3, icon: '🚑', text: 'Sin ambulancias disponibles', type: 'amb' });
+  }
+  events.sort((a, b) => a.prio - b.prio);
+  crisisEvents.length = 0; events.forEach(e => crisisEvents.push(e));
+
+  const el = document.getElementById('crisis-list');
+  if (!el) return;
+  el.innerHTML = events.length
+    ? events.map((e, i) => `<div class="ci p${e.prio}" onclick="handleCrisisClick(crisisEvents[${i}])"><span style="font-size:20px;">${e.icon}</span><div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--white);">${e.text}</div><div style="font-size:9px;color:var(--muted);">Prioridad ${e.prio} — Toca para gestionar</div></div><span style="padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;background:${e.prio===1?'rgba(255,45,74,0.2)':e.prio===2?'rgba(255,214,0,0.2)':'rgba(0,200,212,0.2)'};color:${e.prio===1?'var(--red)':e.prio===2?'var(--yellow)':'var(--teal)'};">${e.prio===1?'CRÍTICA':e.prio===2?'ALTA':'MEDIA'}</span></div>`).join('')
+    : '<div style="color:var(--muted);font-size:11px;padding:20px;text-align:center;">✅ Sin crisis activas. Hospital operativo con normalidad.</div>';
+
+  // Stats
+  document.getElementById('st-ingr').textContent = state.stats.admissions;
+  document.getElementById('st-alta').textContent = state.stats.discharges;
+  document.getElementById('st-cir').textContent = state.stats.surgeries;
+  document.getElementById('st-nac').textContent = state.stats.births;
+
+  // Action log
+  const alog = document.getElementById('alog');
+  if (alog && state.news.length) {
+    alog.innerHTML = state.news.slice(0, 12).map(n =>
+      `<div style="border-left:2px solid var(--teal2);padding:5px 8px;margin-bottom:6px;"><div style="font-size:9px;color:var(--teal);font-family:'Share Tech Mono',monospace;">${n.time}</div><div style="font-size:10px;color:var(--text);">${n.text}</div></div>`
+    ).join('');
+  }
+}
+
+function handleCrisisClick(e) {
+  if (!e) return;
+  if (e.type === 'cb') { notify('🚨 El Código Azul solo se cierra con el botón DESACTIVAR de la pantalla de emergencia', 'warn'); return; }
+  if (e.type === 'pac' && e.pid) { openPatient(e.pid); return; }
+  if (e.type === 'blood' && e.bt) { state.blood[e.bt] = (state.blood[e.bt] || 0) + 20; updateBancoSangre(); notify('🩸 Sangre ' + e.bt + ' repuesta', 'success'); return; }
+  notify('✅ Evento gestionado', 'success');
+}
+
+// ========== PACIENTES ==========
+function updatePacientes() {
+  document.getElementById('full-pact').innerHTML = state.patients.slice(0, 60).map(p => {
+    const sc = p.status === 'crítico' ? 'critico' : p.status === 'observación' ? 'observacion' : 'estable';
+    const sat = p.satisfaction || 70;
+    return `<tr onclick="openPatient('${p.id}')">
+      <td style="font-size:9px;color:var(--teal);font-family:'Share Tech Mono',monospace;">${p.id}</td>
+      <td style="font-weight:600;color:var(--white);">${p.name}</td><td>${p.age}</td>
+      <td style="font-size:10px;color:var(--muted);">${p.diagnosis}</td>
+      <td>${sbHTML(p.status)}</td>
+      <td style="font-size:10px;color:var(--teal);">${p.room}</td>
+      <td style="font-size:10px;">${p.doctor}</td>
+      <td>${sat > 70 ? '😊' : sat > 40 ? '😐' : '😠'}</td>
+      <td><button class="btn bt" style="padding:2px 7px;font-size:9px;" onclick="event.stopPropagation();openPatient('${p.id}')">Ver</button></td>
+    </tr>`;
+  }).join('');
+  document.getElementById('total-pac').textContent = state.patients.length;
+}
+
+// ========== PERSONAL ==========
+function updatePersonal() {
+  document.getElementById('staff-full').innerHTML = state.staff.map(s => `
+    <div class="sr"><div class="sav">${s.icon || '👤'}</div>
+    <div style="flex:1;"><div class="sn">${s.name}</div><div class="sa">${s.role} — ${s.area}</div><div style="font-size:9px;color:var(--muted);">${s.status}</div></div>
+    <select onchange="moveStaff('${s.name}',this.value)" style="background:var(--panel);border:1px solid var(--border);color:var(--muted);padding:2px 6px;border-radius:4px;font-size:9px;outline:none;max-width:110px;">
+      <option value="">Mover a...</option>
+      ${['Emergencias','UCI','Quirófano 1','Quirófano 2','Quirófano 3','Radiología','Pediatría','Maternidad','Hospitalización'].map(a=>`<option>${a}</option>`).join('')}
+    </select>
+    <div class="sdd ${s.status==='Disponible'||s.status==='En ronda'?'sd-a':s.status.includes('cirugía')||s.status.includes('Atendiendo')?'sd-b':'sd-r'}"></div></div>`).join('');
+
+  document.getElementById('emp-panel').innerHTML = '<div style="text-align:center;padding:8px;"><div style="font-size:32px;margin-bottom:6px;">🩺</div><div style="font-size:14px;font-weight:700;color:var(--white);">Dr. Shaun Murphy</div><div style="font-size:11px;color:var(--teal);">Diagnóstico Élite</div><div style="font-size:11px;margin-top:6px;color:var(--yellow);">★ Rating: 99/100</div></div>';
+
+  const distrib = {};
+  state.staff.forEach(s => { distrib[s.area] = (distrib[s.area] || 0) + 1; });
+  document.getElementById('staff-areas').innerHTML = Object.entries(distrib).slice(0, 8).map(([a, n]) =>
+    `<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:11px;">${a}</span><span style="font-size:11px;color:var(--teal);">${n} pers.</span></div><div class="pb mb8"><div class="pf t" style="width:${Math.min(100,n*15)}%"></div></div>`
+  ).join('');
+}
+
+function moveStaff(name, area) {
+  if (!area) return;
+  const s = state.staff.find(x => x.name === name);
+  if (s) { s.area = area; s.status = 'Trasladando a ' + area; notify('🔄 ' + name + ' → ' + area, ''); }
+}
+
+// ========== AMBULANCES ==========
+function updateAmbulances() {
+  const el = document.getElementById('amb-full');
+  if (!el) return;
+  const statusColor = { disponible: 'var(--green)', en_ruta: 'var(--yellow)', mantenimiento: 'var(--muted)' };
+  el.innerHTML = state.ambulances.map(a => `
+    <div class="card"><div class="card-hdr"><span class="ct">🚑 ${a.id}</span><span style="font-size:18px;">${a.status==='disponible'?'🟢':a.status==='en_ruta'?'🟡':'⚫'}</span></div>
+    <div class="cb"><div class="fb mb8"><span>Conductor</span><span style="font-size:11px;">${a.crew}</span></div>
+    <div class="fb mb8"><span>Ubicación</span><span style="font-size:11px;color:var(--teal);">${a.location}</span></div>
+    <div class="fb mb8"><span>Estado</span><span style="font-size:11px;font-weight:700;color:${statusColor[a.status]||'var(--muted)'};">${a.status.toUpperCase()}</span></div>
+    ${a.status==='disponible'?`<button class="btn bt" style="width:100%;" onclick="dispatchAmb('${a.id}')">🚑 Despachar</button>`:''}
+    </div></div>`).join('');
+}
+
+function dispatchAmb(id) {
+  const a = state.ambulances.find(x => x.id === id);
+  if (!a || a.status !== 'disponible') return;
+  a.status = 'en_ruta';
+  a.location = 'Zona ' + ['Norte','Sur','Centro'][Math.floor(Math.random()*3)];
+  addNews('🚑 ' + id + ' despachada por Dr. Daniel.');
+  notify('🚑 ' + id + ' despachada', '');
+  setTimeout(() => {
+    a.status = 'disponible'; a.location = 'Base Hospital';
+    const p = makePatient(); state.patients.unshift(p); state.stats.admissions++;
+    addNews('🚑 ' + id + ' llegó con paciente: ' + p.name);
+    notify('🚑 ' + id + ' llegó con ' + p.name, 'success');
+    updateAmbulances();
+    updateDashboard();
+  }, 12000 + Math.random() * 8000);
+  updateAmbulances();
+}
+
+// ========== MATERNIDAD ==========
+function updateMaternidad() {
+  const el = document.getElementById('birth-list');
+  if (!el) return;
+  el.innerHTML = state.births.slice(0, 15).map(b =>
+    `<div class="bc"><div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:12px;font-weight:700;color:var(--white);">👶 ${b.baby}</span><span style="background:rgba(0,230,118,0.15);color:var(--green);border:1px solid rgba(0,230,118,0.3);padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;">${b.status}</span></div><div style="font-size:10px;color:var(--muted);">Madre: ${b.mother} | ${b.weight} | ${b.date}</div><div style="font-size:10px;color:var(--green);margin-top:2px;">✅ ${b.health}</div></div>`
+  ).join('') || '<div style="color:var(--muted);font-size:11px;padding:10px;">Sin nacimientos registrados aún.</div>';
+  const el2 = document.getElementById('birth-c');
+  if (el2) el2.textContent = state.births.length + ' nacimientos';
+  const bn = document.getElementById('bn'); if (bn) bn.textContent = state.births.filter(b => b.status === 'Normal').length;
+  const be = document.getElementById('be'); if (be) be.textContent = state.births.filter(b => b.status === 'Emergencia').length;
+  const bh = document.getElementById('bh'); if (bh) bh.textContent = state.births.filter(b => b.health && b.health.includes('ano')).length;
+}
+
+// ========== BANCO DE SANGRE ==========
+function updateBancoSangre() {
+  const el = document.getElementById('blood-g');
+  if (!el) return;
+  el.innerHTML = Object.entries(state.blood).map(([type, units]) => {
+    const crit = units < 10, low = units < 20;
+    return `<div class="bcard" style="${crit?'border-color:var(--red);background:rgba(255,45,74,0.08);':low?'border-color:var(--yellow);':''}">\
+<div class="btype">${type}</div><div class="bunits">${units}</div>\
+<div style="font-size:10px;color:${crit?'var(--red)':low?'var(--yellow)':'var(--green)'};">${crit?'⚠ CRÍTICO':low?'⚠ BAJO':'✅ OK'}</div>\
+<div class="pb" style="margin-top:6px;"><div class="pf ${crit?'r':low?'y':'g'}" style="width:${Math.min(100,units*2)}%"></div></div>\
+<button onclick="requestBlood('${type}')" style="margin-top:6px;background:rgba(255,45,74,0.12);border:1px solid var(--red2);color:var(--red);padding:2px 8px;border-radius:4px;font-size:9px;cursor:pointer;width:100%;">+ Solicitar</button></div>`;
+  }).join('');
+
+  const tlog = document.getElementById('tlog');
+  if (tlog && !tlog.innerHTML.trim()) tlog.innerHTML = '<div style="font-size:10px;color:var(--muted);">Sin transfusiones registradas hoy.</div>';
+}
+
+function requestBlood(bt) {
+  state.blood[bt] = (state.blood[bt] || 0) + 15;
+  notify('🩸 Sangre ' + bt + ' — 15 unidades recibidas', 'success');
+  updateBancoSangre();
+}
+
+// ========== ALIADOS ==========
+function updateAliados() {
+  document.getElementById('ally-list').innerHTML = ALLY_HOSPITALS.map(h =>
+    `<div style="background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+      <span style="font-size:28px;">🏥</span>
+      <div style="flex:1;"><div style="font-weight:700;color:var(--white);font-size:12px;">${h}</div>
+      <div style="font-size:10px;color:var(--teal);font-family:'Share Tech Mono',monospace;">Activo — Conectado</div></div>
+      <button class="btn bt" style="font-size:9px;" onclick="contactAlly('${h}')">Contactar</button>
+    </div>`
+  ).join('');
+  const tlog = document.getElementById('translog');
+  if (tlog && !tlog.innerHTML.trim()) tlog.innerHTML = '<div style="font-size:10px;color:var(--muted);">Sin traslados registrados.</div>';
+}
+
+function contactAlly(name) {
+  notify('📞 Contactando ' + name, '');
+  offerConvo('allyContact', { ally: name }, { force: true });
+}
+
+// ========== LOGROS ==========
+function updateLogros() {
+  document.getElementById('ach-g').innerHTML = state.achievements.map(a =>
+    `<div class="ach ${a.unlocked ? 'un' : 'lk'}"><div class="ai">${a.icon}</div><div class="an">${a.name}</div><div class="ad">${a.desc}</div>${a.unlocked ? `<div class="adate">${a.date || 'Desbloqueado'}</div>` : '<div style="font-size:9px;color:var(--muted);">🔒 Bloqueado</div>'}</div>`
+  ).join('');
+}
+
+// ========== PERIÓDICO ==========
+function updatePeriodico() {
+  document.getElementById('paper-date').textContent = new Date().toLocaleDateString('es-ES', { weekday: 'long', day: '2-digit', month: 'long' }).toUpperCase();
+  document.getElementById('news-list').innerHTML = state.news.slice(0, 25).map(n =>
+    `<div class="ni"><div class="nt">${n.time}</div><div class="ntx">${n.text}</div></div>`
+  ).join('') || '<div style="color:var(--muted);padding:16px;">Sin noticias.</div>';
+}
+
+function addNews(text) {
+  state.news.unshift({ text, time: tNow() });
+  if (state.news.length > 50) state.news.pop();
+}
+
+// ========== MONITORES ==========
+function updateMonitorSelect() {
+  const sel = document.getElementById('mon-sel');
+  if (!sel) return;
+  sel.innerHTML = state.patients.slice(0, 30).map(p => `<option value="${p.id}">${p.name} (${p.id})</option>`).join('');
+  updateMon();
+}
+
+function updateMon() {
+  const id = document.getElementById('mon-sel')?.value;
+  const p = state.patients.find(x => x.id === id) || state.patients[0];
+  if (!p) return;
+  document.getElementById('m-hr').textContent = p.hr || 72;
+  document.getElementById('m-spo2').textContent = p.spo2 || 98;
+  document.getElementById('m-bp').textContent = p.bp || '120/80';
+  document.getElementById('m-temp').textContent = p.temp || 36.8;
+}
+
+// ========== WAVE ANIMATIONS ==========
+function initWaves() { animWaves(); }
+function animWaves() {
+  state.waveT = (state.waveT || 0) + 0.12;
+  const t = state.waveT;
+  [['w-hr','#00e676'], ['w-spo2','#00c8d4'], ['w-bp','#ffd600'], ['w-temp','#ff2d4a']].forEach(([id, color], ki) => {
+    const canvas = document.getElementById(id);
+    if (!canvas || !canvas.offsetWidth) return;
+    canvas.width = canvas.offsetWidth; canvas.height = 55;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.shadowColor = color; ctx.shadowBlur = 6;
+    ctx.beginPath();
+    for (let x = 0; x < canvas.width; x++) {
+      const phase = (x / canvas.width) * Math.PI * 6 + t;
+      let y = 27;
+      if (ki === 0) { const p2 = phase % (Math.PI*2); y = p2 < 0.4 ? 27 - p2*55 : p2 < 0.7 ? 27 + (p2-0.4)*55-22 : 27 + Math.sin(p2)*2; }
+      else if (ki === 1) y = 27 + Math.sin(phase) * 16 + Math.sin(phase * 2) * 3;
+      else if (ki === 2) { const p2 = phase % (Math.PI*2); y = 27 - (p2 < 1.5 ? Math.sin(p2 * Math.PI / 1.5) * 18 : 0); }
+      else y = 27 + Math.sin(phase * 0.4) * 6 + Math.sin(phase * 1.2) * 3;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+  });
+}
+
+// ========== CHAT ==========
+function addChatMsg(sender, icon, role, text) {
+  state.messages.push({ sender, icon, role, text, time: tNow() });
+  if (state.messages.length > 60) state.messages.shift();
+  if (document.getElementById('sec-chat').classList.contains('active')) updateChat();
+}
+
+function updateChat() {
+  const el = document.getElementById('chat-msgs');
+  if (!el) return;
+  el.innerHTML = state.messages.slice(-30).map(m =>
+    `<div class="cmsg ${m.sender === 'Dr. Daniel' ? 'dan' : ''}">
+      <div class="cav">${m.icon || m.sender[0]}</div>
+      <div class="cbub"><div class="csen">${esc(m.sender)} — ${esc(m.role || '')}</div><div class="ctxt">${esc(m.text)}</div><div class="ctm">${m.time}</div></div>
+    </div>`
+  ).join('');
+  el.scrollTop = el.scrollHeight;
+
+  // On-duty
+  const od = document.getElementById('on-duty');
+  if (od) od.innerHTML = state.staff.slice(0, 10).map(s =>
+    `<div style="display:flex;align-items:center;gap:8px;padding:5px;border-bottom:1px solid var(--border2);">
+      <span style="font-size:16px;">${s.icon || '👤'}</span>
+      <div style="flex:1;"><div style="font-size:11px;font-weight:600;color:var(--white);">${s.name}</div><div style="font-size:9px;color:var(--muted);">${s.area}</div></div>
+      <div class="sdd ${s.status === 'Disponible' ? 'sd-a' : 'sd-b'}"></div>
+    </div>`
+  ).join('');
+
+  // Call log
+  const cl = document.getElementById('call-log');
+  if (cl && !cl.innerHTML.trim()) cl.innerHTML = '<div style="color:var(--muted);font-size:10px;">Sin llamadas registradas.</div>';
+}
+
+// ========== MOTOR DE CONVERSACIONES ==========
+const STAFF_BOOK = {
+  shaun:   { name: 'Dr. Shaun Murphy',    icon: '🩺',   role: 'Diagnóstico Élite' },
+  andrews: { name: 'Dr. Marcus Andrews',  icon: '🔬',   role: 'Cirujano Jefe' },
+  braun:   { name: 'Dra. Audrey Braun',   icon: '🏥',   role: 'Cirujana Trauma' },
+  martinez:{ name: 'Dr. Carlos Martínez', icon: '👨‍⚕️', role: 'Médico Emergencias' },
+  sanchez: { name: 'Dra. Ana Sánchez',    icon: '👩‍⚕️', role: 'Intensivista' },
+  garcia:  { name: 'Enf. García',         icon: '👩‍⚕️', role: 'Enfermera Jefe' },
+  jimenez: { name: 'Enf. Jiménez',        icon: '🧑‍⚕️', role: 'Enfermero UCI' },
+  lopez:   { name: 'Dr. Luis López',      icon: '❤️',   role: 'Cardiólogo' },
+  torres:  { name: 'Dr. Raúl Torres',     icon: '🔬',   role: 'Cirujano' },
+  vega:    { name: 'Dra. Mónica Vega',    icon: '👶',   role: 'Pediatra' },
+  mendoza: { name: 'Dra. Elena Mendoza',  icon: '👩‍⚕️', role: 'Ginecóloga' },
+  herrera: { name: 'Dr. Pablo Herrera',   icon: '🦴',   role: 'Traumatólogo' },
+  ruiz:    { name: 'Dra. Carmen Ruiz',    icon: '💉',   role: 'Anestesióloga' },
+  cruz:    { name: 'Enf. Roberto Cruz',   icon: '🧑‍⚕️', role: 'Enf. Emergencias' },
+  lima:    { name: 'Enf. Patricia Lima',  icon: '👩‍⚕️', role: 'Matrona' }
+};
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+function hashStr(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
+function say(key, text) { const s = STAFF_BOOK[key]; addChatMsg(s.name, s.icon, s.role, text); }
+function postAdmin(text) { addChatMsg('Dr. Daniel', '👑', 'Administrador General', text); }
+function logAction(text) {
+  state.crisisLog.unshift({ time: tNow(), text });
+  if (state.crisisLog.length > 60) state.crisisLog.pop();
+  addNews('🧾 ' + text);
+}
+// Elige una variante según el contexto: primero las que cumplen `when`, y si hay varias rota con la semilla del evento.
+function pickV(ctx, variants) {
+  const cond = variants.filter(v => v.when && v.when(ctx));
+  const pool = cond.length ? cond : variants.filter(v => !v.when);
+  return pool[(ctx.seed + ctx.turn) % pool.length].v;
+}
+const opt = (id, label, kw, run) => ({ id, label, kw, run });
+
+// Helpers de estado del hospital
+const critList = () => state.patients.filter(p => p.status === 'crítico');
+const freeAmb = () => state.ambulances.filter(a => a.status === 'disponible');
+const lowBlood = () => Object.entries(state.blood).filter(([, u]) => u < 8).sort((a, b) => a[1] - b[1]).map(([t]) => t);
+const bedCap = () => 16 + (state.extraBeds || 0);
+const bedsPct = () => Math.min(100, Math.round(critList().length / bedCap() * 100));
+const statusLine = () => critList().length + ' críticos · ' + freeAmb().length + ' ambulancias libres · O- ' + state.blood['O-'] + ' U · UCI ' + bedsPct() + '%';
+const invLine = () => Object.entries(state.blood).map(([t, u]) => t + ': ' + u + ' U').join(', ');
+function allyFor(ctx) { return ALLY_HOSPITALS[ctx.seed % ALLY_HOSPITALS.length]; }
+function patOf(d) {
+  const p = state.patients.find(x => x.id === d.pid) || critList()[0] || state.patients[0];
+  if (p) d.pid = p.id;
+  return p || { name: 'el paciente', age: '—', room: 'Emergencias-01', diagnosis: 'cuadro crítico', hr: 120, spo2: 90, status: 'crítico', stub: true };
+}
+
+// ----- Cola de mensajes: respuestas en secuencia natural, con guardas para descartar mensajes obsoletos -----
+const Q = { items: [], waiting: false };
+let pendingText = [];
+function chatBusy() { return Q.waiting || Q.items.length > 0; }
+function msgItem(key, text, guard) {
+  return { delay: 600 + Math.min(1500, text.length * 10), guard, run: () => say(key, text) };
+}
+function qPush(list, front) {
+  list = Array.isArray(list) ? list : [list];
+  if (front) Q.items.unshift(...list); else Q.items.push(...list);
+  if (!Q.waiting) qRun();
+}
+function qRun() {
+  let it;
+  while ((it = Q.items.shift()) && it.guard && !it.guard()) { /* descarta lo obsoleto */ }
+  if (!it) { Q.waiting = false; return; }
+  Q.waiting = true;
+  setTimeout(() => {
+    Q.waiting = false;
+    if (!it.guard || it.guard()) { try { it.run(); } catch (e) { console.error(e); } }
+    if (!Q.waiting) { if (Q.items.length) qRun(); else drainText(); }
+  }, it.delay);
+}
+function drainText() { if (pendingText.length && !chatBusy()) handleAdminText(pendingText.shift()); }
+
+// ----- Contexto de conversación -----
+function makeCtx(type, data) {
+  const ctx = { id: 'C' + Date.now() + Math.floor(Math.random() * 1000), type, data: data || {}, node: null, created: Date.now(), turn: 0, used: {}, optDefs: null, prio: CONVOS[type].prio };
+  ctx.seed = hashStr(ctx.id);
+  ctx.guard = () => state.chatCtx === ctx && (ctx.type !== 'codeblue' || (state.codeBlue && state.cbEvent && state.cbEvent.id === ctx.data.eventId));
+  return ctx;
+}
+function parkConvo(type, data) {
+  if (state.chatQueue.some(q => q.type === type)) return;
+  if (state.chatQueue.length >= 3) state.chatQueue.shift();
+  state.chatQueue.push({ type, data });
+}
+function releaseQueue() {
+  if (state.codeBlue || state.chatCtx || !state.chatQueue.length || chatBusy()) return;
+  const q = state.chatQueue.shift();
+  offerConvo(q.type, q.data, { retake: true });
+}
+function offerConvo(type, data, opts) {
+  opts = opts || {};
+  const def = CONVOS[type];
+  if (!def) return false;
+  let cur = state.chatCtx;
+  // Una conversación sin respuesta durante 2 minutos caduca para no bloquear nuevos eventos.
+  if (cur && cur.type !== 'codeblue' && Date.now() - cur.created > 120000 && !chatBusy()) {
+    state.chatCtx = null; state.chatOpts = []; renderChatOpts(); cur = null;
+  }
+  if (cur) {
+    if (type === 'codeblue') parkConvo(cur.type, cur.data);                    // el Código Azul tiene prioridad absoluta
+    else if (cur.type === 'codeblue' && state.codeBlue) { parkConvo(type, data); return false; } // nunca pisa las decisiones críticas
+    else if (cur.type === type) { if (!opts.force) return false; }              // evita eventos duplicados
+    else if (opts.force || def.prio > cur.prio) parkConvo(cur.type, cur.data);
+    else return false;
+    state.chatCtx = null;
+  }
+  const ctx = makeCtx(type, data);
+  state.chatCtx = ctx;
+  state.chatOpts = [];
+  renderChatOpts();
+  state.chatQueue = state.chatQueue.filter(q => q.type !== type);
+  const intro = def.intro(ctx.data, ctx).map(x => x.slice());
+  if (opts.retake && intro.length) intro[0][1] = 'Retomo lo que quedó pendiente, Dr. Daniel: ' + intro[0][1].replace(/^Dr\. Daniel, /, '');
+  if (!def.quiet && intro.length) {
+    const s = STAFF_BOOK[intro[0][0]];
+    addNews('🔔 ' + s.name + ': ' + intro[0][1]);
+    notify('🔔 ' + s.name + ': ' + intro[0][1].substring(0, 50) + '...', '');
+  }
+  const g = ctx.guard;
+  qPush(intro.map(([k, t]) => msgItem(k, t, g)).concat([{ delay: 250, guard: g, run: () => afterSeq(ctx, 'start') }]), type === 'codeblue');
+  return true;
+}
+function afterSeq(ctx, node) {
+  if (state.chatCtx !== ctx) return;
+  ctx.node = node;
+  if (!node) { finishCtx(ctx); return; }
+  const list = (CONVOS[ctx.type].nodes[node](ctx) || []).filter(Boolean);
+  if (!list.length) { finishCtx(ctx); return; }
+  ctx.optDefs = list;
+  state.chatOpts = list.map(o => ({ id: o.id, label: o.label }));
+  renderChatOpts();
+}
+function finishCtx(ctx) {
+  state.chatOpts = []; ctx.optDefs = null; renderChatOpts();
+  if (ctx.type === 'codeblue') return; // el contexto del código vive hasta que deactCB() lo cierre
+  if (state.chatCtx === ctx) state.chatCtx = null;
+  setTimeout(releaseQueue, 1500);
+}
+
+// ----- Botones y mensajes escritos: misma lógica -----
+function renderChatOpts() {
+  const el = document.getElementById('chat-opts');
+  if (!el) return;
+  el.textContent = '';
+  (state.chatOpts || []).forEach(o => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'co';
+    b.textContent = o.label;
+    b.addEventListener('click', () => {
+      el.querySelectorAll('button').forEach(x => { x.disabled = true; });
+      chooseOption(o.id, false);
+    });
+    el.appendChild(b);
+  });
+}
+function chooseOption(optId, viaText) {
+  const ctx = state.chatCtx;
+  if (!ctx || !ctx.optDefs) return;
+  const o = ctx.optDefs.find(x => x.id === optId);
+  if (!o) return;
+  if (!viaText) postAdmin(o.label);
+  state.chatOpts = []; ctx.optDefs = null; renderChatOpts();
+  ctx.turn++;
+  let res = {};
+  try { res = o.run(ctx) || {}; } catch (e) { console.error(e); }
+  const g = ctx.guard;
+  qPush((res.seq || []).map(([k, t]) => msgItem(k, t, g)).concat([{ delay: 250, guard: g, run: () => afterSeq(ctx, res.next || null) }]));
+}
+function matchOption(list, text) {
+  const t = norm(text).trim();
+  let m = t.match(/^(?:opcion\s*|la\s*)?(\d)\s*[.)]?$/);
+  if (m) return list[parseInt(m[1], 10) - 1] || null;
+  const ord = { primera: 0, primero: 0, segunda: 1, segundo: 1, tercera: 2, tercero: 2, cuarta: 3, cuarto: 3 };
+  m = t.match(/^(?:la\s+|el\s+|opcion\s+)?(primera|primero|segunda|segundo|tercera|tercero|cuarta|cuarto)(?:\s+opcion)?$/);
+  if (m) return list[ord[m[1]]] || null;
+  let best = null, bs = 0;
+  list.forEach(o => {
+    let s = t === norm(o.label) ? 1000 : 0;
+    (o.kw || []).forEach(k => { const r = t.match(new RegExp(k)); if (r) s += Math.max(1, r[0].length); });
+    if (s > bs) { bs = s; best = o; }
+  });
+  return best;
+}
+function sendMsg() {
+  const inp = document.getElementById('chat-in');
+  const text = inp.value.trim();
+  if (!text) return;
+  inp.value = '';
+  postAdmin(text);
+  handleAdminText(text);
+}
+function handleAdminText(text) {
+  if (chatBusy()) { pendingText.push(text); return; }
+  const ctx = state.chatCtx;
+  if (ctx && ctx.optDefs && ctx.optDefs.length) {
+    const m = matchOption(ctx.optDefs, text);
+    if (m) { chooseOption(m.id, true); return; }
+  }
+  respondFree(text);
+}
+
+// ----- Respuestas a texto libre según palabras clave y estado real del hospital -----
+const TOPIC_MAKERS = {
+  critical() {
+    const l = critList();
+    if (!l.length) return { seq: [['martinez', 'Ahora mismo no hay pacientes en estado crítico en el hospital.']] };
+    const top = l.slice(0, 2).map(p => p.name + ' (' + p.room + ')').join(' y ');
+    return { seq: [
+      ['martinez', 'Tenemos ' + l.length + (l.length > 1 ? ' pacientes críticos' : ' paciente crítico') + '. Los más delicados: ' + top + '.'],
+      l.length >= 6 ? ['sanchez', 'UCI está al límite; cada ingreso crítico adicional nos obligará a derivar.'] : ['sanchez', 'UCI aún maneja la carga, pero conviene vigilar la evolución.']
+    ], offer: ['critical', { pid: l[0].id }] };
+  },
+  blood() {
+    const low = lowBlood();
+    const seq = [['garcia', 'Inventario del banco de sangre — ' + invLine() + '.']];
+    if (low.length) seq.push(['shaun', 'Niveles críticos en ' + low.join(', ') + '. Recomiendo actuar antes de la próxima cirugía.']);
+    else seq.push(['shaun', 'Todos los grupos están en rango aceptable por ahora.']);
+    return { seq, offer: low.length ? ['blood', { bt: low[0] }] : null };
+  },
+  ambulance() {
+    const f = freeAmb().length, e = state.ambulances.filter(a => a.status === 'en_ruta'), m = state.ambulances.filter(a => a.status === 'mantenimiento').length;
+    const seq = [['cruz', 'Flota: ' + f + ' disponibles, ' + e.length + ' en ruta, ' + m + ' en mantenimiento.']];
+    seq.push(f === 0 ? ['martinez', 'Sin unidades libres: si entra otro aviso tendremos que pedir apoyo aliado.'] : ['martinez', 'Cobertura holgada; podemos atender ' + f + ' avisos simultáneos.']);
+    return { seq, offer: e.length ? ['ambulance', { amb: e[0].id }] : null };
+  },
+  beds() {
+    const pct = bedsPct();
+    return { seq: [
+      ['sanchez', 'UCI al ' + pct + '% (' + critList().length + ' críticos para ' + bedCap() + ' camas).'],
+      pct >= 80 ? ['garcia', 'Estamos cerca del tope; sugiero habilitar camas extra.'] : ['garcia', 'Hay margen, aunque el turno nocturno suele apretar.']
+    ], offer: pct >= 70 ? ['beds', { occ: pct }] : null };
+  },
+  surgery() {
+    const n = state.patients[0] ? state.patients[0].name : 'paciente';
+    return { seq: [
+      ['andrews', 'Cirugías realizadas en esta partida: ' + state.stats.surgeries + '. Quirófanos 1 y 2 operativos.'],
+      ['ruiz', 'Anestesia disponible. Tengo pendiente la cirugía de ' + n + '.']
+    ], offer: ['surgery', { name: n, kind: 'cirugía' }] };
+  },
+  ally() {
+    return { seq: [
+      ['andrews', 'Hospitales aliados conectados: ' + ALLY_HOSPITALS.join(', ') + '.'],
+      ['cruz', 'Puedo coordinar traslados, sangre o especialistas con cualquiera de ellos.']
+    ], offer: ['allyContact', { ally: ALLY_HOSPITALS[Math.floor(Math.random() * ALLY_HOSPITALS.length)] }] };
+  },
+  birth() {
+    return { seq: [
+      ['mendoza', 'Maternidad: ' + state.stats.births + ' nacimientos registrados. Todo bajo control.'],
+      ['lima', 'Tenemos camas de parto disponibles y neonatología en alerta.']
+    ] };
+  },
+  status() {
+    return { seq: [
+      ['shaun', 'Resumen general: ' + statusLine() + '.'],
+      critList().length >= 5 ? ['andrews', 'La carga crítica es alta; recomiendo reforzar Emergencias y UCI.'] : ['andrews', 'La operación es estable. Quirófanos y personal en rango normal.']
+    ] };
+  }
+};
+const TOPICS = [
+  ['greeting', /^\s*(hola|buenos dias|buenas tardes|buenas noches|saludos|que tal)\b[\s!.,?]*$/],
+  ['thanks', /\b(gracias|excelente|buen trabajo|muy bien|perfecto)\b/],
+  ['critical', /critic|grave|paciente|urgenc|deterior/],
+  ['blood', /sangre|banco|donant|transfus|o-/],
+  ['ambulance', /ambulanc|traslad|paramedic|flota/],
+  ['beds', /\bcama|ocupacion|\buci\b|intensiv|capacidad/],
+  ['surgery', /cirug|quirofano|operaci|operar|biopsia/],
+  ['ally', /aliad|otro hospital|hospitales/],
+  ['birth', /parto|nacimient|maternidad|bebe|embaraz/],
+  ['status', /informe|resumen|situacion|estado general|reporte|como estamos|como va todo/]
+];
+function respondFree(text) {
+  const t = norm(text);
+  const ev = state.cbEvent;
+  let seq = null, offer = null;
+  if (state.codeBlue && ev && /desactiv|cerrar|apagar|terminar|finaliz|dar por (cerrado|terminado)/.test(t)) {
+    seq = [['shaun', 'Dr. Daniel, el Código Azul solo se cierra con el botón DESACTIVAR de la pantalla de emergencia; yo no puedo apagarlo desde el chat.'],
+           [ev.authorized ? 'sanchez' : 'garcia', ev.authorized ? 'Cuando usted lo disponga, el paciente ya puede cerrar el ciclo.' : 'Recuerde que aún no se ha autorizado el protocolo completo.']];
+  } else if (state.codeBlue && ev && /codigo azul|\bparo\b|\brcp\b|reanim|desfibril/.test(t)) {
+    seq = [['shaun', 'Código Azul en ' + ev.location + ': ' + ev.patient.name + ', ' + ev.rhythm + '. ' + (ev.authorized ? 'Protocolo completo en curso.' : 'Seguimos a la espera de su autorización.')],
+           ['cruz', ev.team.length + ' integrantes en sitio.']];
+  } else {
+    const hit = TOPICS.find(([, re]) => re.test(t));
+    if (hit) {
+      const id = hit[0];
+      if (id === 'greeting') {
+        const crit = critList().length;
+        seq = [[isNightShift() ? 'sanchez' : 'shaun', (isNightShift() ? 'Buenas noches' : 'Buenos días') + ', Dr. Daniel. ' + statusLine() + '.']];
+        if (crit >= 5) seq.push(['martinez', 'Tenemos bastante carga crítica; cuando pueda, revise el panel de Crisis.']);
+      } else if (id === 'thanks') {
+        seq = [[critList().length >= 5 ? 'martinez' : 'garcia', critList().length >= 5 ? 'A usted, doctor. Seguimos con alta carga, el equipo no baja la guardia.' : 'Con gusto, Dr. Daniel. El turno va tranquilo.']];
+      } else {
+        const r = TOPIC_MAKERS[id]();
+        seq = r.seq; offer = r.offer || null;
+      }
+    }
+  }
+  if (!seq) {
+    if (state.codeBlue && ev) {
+      seq = [['shaun', 'Dr. Daniel, el Código Azul en ' + ev.location + ' sigue activo. ' + (ev.authorized ? 'El protocolo está en curso; ciérrelo con DESACTIVAR cuando lo estime.' : 'Seguimos esperando su decisión sobre el protocolo.')],
+             ['garcia', 'Si desea dar una instrucción concreta, escríbala o use las opciones del chat.']];
+    } else {
+      seq = [[critList().length >= 5 ? 'martinez' : 'andrews', 'Lo anoto, Dr. Daniel. Situación actual: ' + statusLine() + '. ¿Qué área prefiere revisar?']];
+      offer = ['brief', {}];
+    }
+  }
+  qPush(seq.map(([k, tx]) => msgItem(k, tx, null)));
+  if (offer && !state.codeBlue) qPush({ delay: 300, guard: null, run: () => offerConvo(offer[0], offer[1]) });
+}
+
+// ----- Disparadores automáticos según el estado del hospital -----
+function autoConvo() {
+  if (state.codeBlue) return;
+  const crit = critList(), low = lowBlood(), enr = state.ambulances.filter(a => a.status === 'en_ruta'), pct = bedsPct();
+  const n = state.patients[0] ? state.patients[0].name : 'paciente';
+  const pool = [];
+  if (crit.length) pool.push(['critical', { pid: crit[0].id }, crit.length >= 4 ? 3 : 1]);
+  if (pct >= 65) pool.push(['beds', { occ: pct }, pct >= 85 ? 3 : 1]);
+  pool.push(['surgery', { name: n, kind: 'cirugía' }, 2]);
+  pool.push(['surgery', { name: n, kind: 'biopsia' }, 1]);
+  if (low.length) pool.push(['blood', { bt: low[0] }, 4]);
+  if (enr.length) pool.push(['ambulance', { amb: enr[0].id }, 2]);
+  const total = pool.reduce((s, x) => s + x[2], 0);
+  let r = Math.random() * total;
+  for (const [type, data, w] of pool) { r -= w; if (r <= 0) { offerConvo(type, data); return; } }
+}
+function autoChatMsg() { autoConvo(); }
+
+// ========== CATÁLOGO DE CONVERSACIONES ==========
+function cbMain(ctx) {
+  const ev = state.cbEvent;
+  if (!ev) return [];
+  const secs = Math.round((Date.now() - ev.start) / 1000);
+  const elapsed = secs >= 60 ? Math.floor(secs / 60) + ' min' : secs >= 15 ? secs + ' s' : 'unos segundos';
+  const auth = opt('auth', 'Autorizar protocolo completo',
+    ['autoriz', 'protocolo\\s+completo', '\\bprocedan?\\b', 'adelante', '\\bapruebo', 'aprobado', 'inicien', 'empiecen', '\\bsi\\b', '\\bdale\\b', 'apliquen', 'hagan?lo'],
+    c => {
+      ev.authorized = true;
+      state.reputation = Math.min(100, state.reputation + 0.5);
+      setCBStatus();
+      logAction('Dr. Daniel autorizó el protocolo completo de Código Azul en ' + ev.location + '.');
+      addNews('✅ Protocolo completo de Código Azul autorizado en ' + ev.location + '. Equipo en acción.');
+      return { seq: [
+        ['shaun', pickV(c, [
+          { when: () => ev.reviewed > 1, v: 'Orden recibida, Dr. Daniel. Perdimos unos minutos valiosos, pero arrancamos ya el protocolo completo: acceso IV, adrenalina y ciclos de desfibrilación.' },
+          { when: () => ev.reviewed === 1, v: 'Confirmado tras la revisión, Dr. Daniel. Iniciamos protocolo completo: vía IV, adrenalina cada 3 minutos y desfibrilación.' },
+          { v: 'Autorización recibida, Dr. Daniel. Protocolo completo en marcha: vía IV, adrenalina y desfibrilación inmediata.' }
+        ])],
+        ['cruz', 'Equipo de emergencias movilizado: carro de paros junto a la cama, vía aérea asegurada y ' + ev.team.length + ' integrantes en posición.'],
+        ['sanchez', 'Paciente ' + ev.patient.name + ': ritmo de ' + ev.rhythm + '. Primera descarga lista' + (ev.supportWaves ? ', con el refuerzo ya en sitio.' : '; si necesita refuerzos, solo dígalo.')]
+      ], next: 'main' };
+    });
+  const review = opt('review', 'Revisar situación primero',
+    ['revis', 'informe', 'situacion', 'reporte', 'dame\\s+(mas\\s+)?(info|datos)', '\\bque\\s+pasa', 'primero'],
+    c => {
+      ev.reviewed++;
+      state.reputation = Math.max(0, state.reputation - 0.2);
+      logAction('Dr. Daniel pidió revisar la situación antes de autorizar el Código Azul (' + ev.location + ').');
+      return { seq: [
+        ['shaun', 'Informe: ' + ev.patient.name + ', ' + ev.patient.age + ' años, ' + ev.patient.dx + '. Ritmo: ' + ev.rhythm + '. Han pasado ' + elapsed + ' desde el aviso. En sitio hay ' + ev.team.length + ' profesionales, desfibrilador y carro de paros listos, y UCI tiene cama libre.'],
+        ['jimenez', pickV(c, [
+          { when: () => state.blood['O-'] < 8, v: 'Acceso IV listo. Aviso: O- está en ' + state.blood['O-'] + ' U por si hay hemorragia asociada.' },
+          { v: 'Acceso IV listo y adrenalina preparada. Solo falta su orden, doctor.' }
+        ])]
+      ], next: 'main' };
+    });
+  const reeval = opt('reeval', 'Pedir otra evaluación',
+    ['otra\\s+evalu', 'segunda\\s+(evalu|opinion)', 'otra\\s+opinion', 'evaluacion\\s+adicional', 'nueva\\s+evalu'],
+    c => {
+      ev.reviewed++;
+      logAction('Dr. Daniel solicitó una segunda evaluación del Código Azul (' + ev.location + ').');
+      return { seq: [
+        ['sanchez', 'Evaluación independiente: ' + ev.patient.name + ' mantiene ' + ev.rhythm + ' sin respuesta a RCP básica. Recomiendo protocolo completo sin más demora.'],
+        [ev.reviewed >= 3 ? 'shaun' : 'garcia', ev.reviewed >= 3 ? 'Doctor, con respeto: ya no hay más que evaluar. Cada segundo cuenta.' : 'El equipo sigue con compresiones mientras usted decide.']
+      ], next: 'main' };
+    });
+  const support = opt('support', 'Solicitar apoyo adicional',
+    ['apoyo', 'refuerzo', 'ayuda', 'mas\\s+(personal|gente|equipo)', 'equipo\\s+adicional'],
+    c => {
+      ev.supportWaves++;
+      const added = addCBSupportWave(2);
+      logAction('Dr. Daniel solicitó apoyo adicional para el Código Azul (' + ev.location + '): ' + (added.join(', ') || 'sin refuerzos libres') + '.');
+      return { seq: [
+        [ev.supportWaves === 1 ? 'andrews' : 'braun', ev.supportWaves === 1 ? 'Voy en camino con instrumental quirúrgico; llego en 2 minutos.' : 'Voy con equipo de trauma; estoy a 3 minutos.'],
+        ['cruz', added.length ? 'Apoyo confirmado: ' + added.join(' y ') + ' se suman al equipo. Ya figuran en el panel del Código Azul.' : 'No quedan más refuerzos libres; todo el personal disponible ya está aquí.'],
+        ['shaun', ev.authorized ? 'Con el refuerzo reorganizo los turnos de compresiones.' : 'El refuerzo no cambia el protocolo: sigo a la espera de su decisión final, Dr. Daniel.']
+      ], next: 'main' };
+    });
+  const supportStatus = opt('supportstatus', 'Consultar estado del apoyo',
+    ['estado\\s+del\\s+apoyo', 'como\\s+va\\s+el\\s+apoyo', 'apoyo', 'refuerzo'],
+    c => {
+      const extra = ev.team.slice(5).map(s => s.name);
+      return { seq: [
+        ['cruz', extra.length ? 'Refuerzos en sitio: ' + extra.join(', ') + '. Total del equipo: ' + ev.team.length + '.' : 'Aún no hay refuerzos en sitio; el equipo base es de ' + ev.team.length + '.'],
+        [ev.authorized ? 'sanchez' : 'shaun', ev.authorized ? 'El equipo reforzado rota compresiones cada 2 minutos.' : 'El equipo está completo, pero seguimos sin su autorización del protocolo completo.']
+      ], next: 'main' };
+    });
+  const status = opt('status', 'Pedir estado del paciente',
+    ['estado\\s+del\\s+paciente', 'como\\s+va', 'evolucion', 'paciente'],
+    c => {
+      ev.progress++;
+      return { seq: ev.progress === 1 ? [
+        ['sanchez', 'Segunda descarga entregada: recuperamos pulso, TA 85/50. Sigue inestable pero responde.'],
+        ['shaun', ev.patient.name + ' responde al protocolo. Descartamos una causa reversible inmediata y seguimos monitorizando.']
+      ] : [
+        ['sanchez', 'Ritmo sinusal estable, SpO₂ 95%, TA 105/70.'],
+        ['shaun', 'Podemos plantear el cierre del código cuando usted lo disponga.']
+      ], next: 'main' };
+    });
+  const transfer = opt('transfer', 'Preparar traslado a UCI', ['traslad', '\\buci\\b', 'mover'],
+    c => {
+      ev.used.transfer = true;
+      logAction('Dr. Daniel ordenó preparar el traslado a UCI del paciente del Código Azul.');
+      return { seq: [
+        ['sanchez', 'UCI tiene la cama lista y el ventilador preparado.'],
+        ['garcia', 'Camilla y ventilador portátil junto al paciente.'],
+        ['jimenez', 'Monitoreo continuo durante el traslado.']
+      ], next: 'main' };
+    });
+  const cardio = opt('cardio', 'Llamar a Cardiología', ['cardio', 'lopez', 'corazon'],
+    c => {
+      ev.used.cardio = true;
+      addCBMember({ name: 'Dr. Luis López', role: 'Cardiólogo', eta: '03:20' }); renderCBTeam(); setCBStatus();
+      logAction('Dr. Daniel llamó a Cardiología para el Código Azul (' + ev.location + ').');
+      return { seq: [
+        ['lopez', 'Voy en camino; pido ECG de 12 derivaciones y troponinas seriadas.'],
+        ['shaun', 'Sospecho causa coronaria; su apoyo será clave para el diagnóstico.']
+      ], next: 'main' };
+    });
+  const finalR = opt('final', 'Pedir informe final', ['informe\\s+final', 'final', 'resumen', 'cerrar'],
+    c => {
+      ev.used.final = true;
+      return { seq: [
+        ['shaun', 'Informe final: ' + ev.patient.name + ' estabilizado con ritmo propio; traslado a UCI ' + (ev.used.transfer ? 'realizado' : 'pendiente') + '. Cuando lo disponga, puede cerrar el código con DESACTIVAR.'],
+        ['sanchez', 'UCI queda a la espera del paciente.']
+      ], next: null };
+    });
+  const standby = opt('standby', 'Mantener al equipo en alerta', ['alerta', 'mantener', 'esperen', 'standby'],
+    c => {
+      ev.used.standby = true;
+      return { seq: [
+        ['garcia', 'Equipo en alerta; no bajamos la guardia hasta su cierre.'],
+        ['cruz', 'Carro de paros recargado por si hay una recaída.']
+      ], next: 'main' };
+    });
+  if (!ev.authorized) {
+    return [auth,
+      ev.reviewed === 0 ? review : (ev.reviewed < 3 ? reeval : null),
+      ev.supportWaves === 0 ? support : supportStatus];
+  }
+  if (ev.used.final) return [];
+  if (ev.progress >= 2) return ev.used.standby ? [finalR] : [finalR, standby];
+  return [status, !ev.used.transfer && transfer, !ev.used.cardio && cardio, ev.supportWaves === 0 ? support : supportStatus];
+}
+
+const CONVOS = {
+  // ---------- CÓDIGO AZUL ----------
+  codeblue: {
+    prio: 3, quiet: true,
+    intro: (d, ctx) => {
+      const ev = state.cbEvent;
+      return [
+        ['shaun', '🚨 CÓDIGO AZUL en ' + ev.location + '. Paciente: ' + ev.patient.name + ' (' + ev.patient.age + ' años), ' + ev.patient.dx + '. Ritmo: ' + ev.rhythm + '. Ya estoy en el sitio con RCP básico en curso. ¿Autoriza el protocolo completo, Dr. Daniel?'],
+        ['sanchez', pickV(ctx, [
+          { when: () => state.blood['O-'] < 8, v: 'UCI tiene cama lista y el desfibrilador cargado. Aviso: O- está en ' + state.blood['O-'] + ' U si hubiera hemorragia.' },
+          { v: 'UCI tiene cama lista y el desfibrilador cargado. Esperamos su decisión.' }
+        ])]
+      ];
+    },
+    nodes: { start: cbMain, main: cbMain }
+  },
+
+  // ---------- PACIENTE CRÍTICO ----------
+  critical: {
+    prio: 2,
+    intro: d => {
+      const p = patOf(d);
+      return [
+        ['martinez', 'Dr. Daniel, ' + p.name + ' (' + p.age + ' años), ' + p.room + ': ' + p.diagnosis + '. FC ' + p.hr + ', SpO₂ ' + p.spo2 + '%. Se está deteriorando. ¿Cómo procedemos?'],
+        p.spo2 < 92 ? ['sanchez', 'Saturación por debajo de 92%: necesita soporte ventilatorio pronto.'] : ['garcia', 'Enfermería está lista para trasladarlo en cuanto usted indique.']
+      ];
+    },
+    nodes: {
+      start: ctx => {
+        const p = patOf(ctx.data);
+        return [
+          opt('uci', 'Trasladar a UCI de inmediato', ['\\buci\\b', 'traslad', 'intensiv'], c => {
+            const old = p.room;
+            if (!p.stub) p.room = 'UCI-' + String(Math.floor(Math.random() * 16) + 1).padStart(2, '0');
+            state.reputation = Math.min(100, state.reputation + 0.3);
+            logAction('Dr. Daniel ordenó el traslado a UCI de ' + p.name + '.');
+            return { seq: [
+              ['sanchez', pickV(c, [{ when: () => bedsPct() >= 90, v: 'Recibido, pero UCI está casi llena; abro la última cama para ' + p.name + '.' }, { v: 'Recibido: ' + (p.stub ? 'cama' : p.room) + ' lista. Lo conecto a monitor y ventilación.' }])],
+              ['garcia', 'Traslado en marcha: ' + p.name + ' sale de ' + old + ' con monitoreo continuo.']
+            ], next: 'follow' };
+          }),
+          opt('estudios', 'Pedir estudios urgentes', ['estudio', 'analisis', 'laboratorio', 'tomograf', 'resonancia', 'examen', 'ecograf'], c => {
+            const dx = norm(p.diagnosis);
+            const txt = /infarto|cardiac/.test(dx) ? 'ECG de 12 derivaciones y troponinas seriadas'
+              : /craneo|acv|contusion/.test(dx) ? 'TAC cerebral urgente y control neurológico'
+              : /neumonia|asmatica|torac/.test(dx) ? 'radiografía de tórax y gasometría arterial'
+              : /sepsis|ceto/.test(dx) ? 'hemocultivos, lactato y panel metabólico' : 'laboratorio completo e imagen dirigida';
+            logAction('Dr. Daniel pidió estudios urgentes para ' + p.name + '.');
+            return { seq: [
+              ['shaun', 'Solicito ' + txt + ' para ' + p.name + '. Tendré resultados en unos 15 minutos.'],
+              ['martinez', 'Mientras tanto lo mantengo estabilizado y monitorizado.']
+            ], next: 'follow' };
+          }),
+          opt('cirugia', 'Cirugía de urgencia', ['cirug', 'quirofano', 'operar', 'operen', 'intervenc'], c => {
+            state.stats.surgeries++;
+            const ok = p.spo2 >= 92;
+            if (ok && !p.stub) p.status = 'observación';
+            logAction('Dr. Daniel autorizó cirugía de urgencia para ' + p.name + '.');
+            addNews(ok ? '🔬 Cirugía de urgencia exitosa: ' + p.name + ' pasa a observación.' : '⚠️ Cirugía compleja: ' + p.name + ' continúa crítico.');
+            return { seq: [
+              ['andrews', 'Autorizado. Quirófano 1 listo, entramos ya.'],
+              ['ruiz', 'Anestesia inducida; paciente estable para operar.'],
+              ['andrews', ok ? 'Cirugía completada sin incidentes: ' + p.name + ' pasa a observación.' : 'Cirugía compleja: logramos controlar el sangrado, pero ' + p.name + ' sigue crítico y vuelve a UCI.']
+            ], next: 'follow' };
+          })
+        ];
+      },
+      follow: ctx => {
+        const p = patOf(ctx.data), u = ctx.used;
+        return [
+          !u.informe && opt('informe', 'Pedir informe de evolución', ['informe', 'evolucion', 'como\\s+va', 'parte', 'estado'], c => {
+            u.informe = true;
+            return { seq: [['sanchez', p.status === 'crítico' ? p.name + ' sigue crítico: FC ' + p.hr + ', SpO₂ ' + p.spo2 + '%.' : p.name + ' evoluciona favorablemente y ahora está en ' + p.status + '.']], next: 'follow' };
+          }),
+          !u.familia && opt('familia', 'Avisar a la familia', ['familia', 'familiar'], c => {
+            u.familia = true;
+            state.reputation = Math.min(100, state.reputation + 0.2);
+            return { seq: [['garcia', 'Familia notificada; llegan en unos 20 minutos.'], ['martinez', 'Les expliqué la situación y firmaron los consentimientos.']], next: 'follow' };
+          }),
+          opt('seguir', 'Seguir con otros pendientes', ['otros', 'pendiente', 'continuar', 'listo', 'nada\\s+mas', 'seguir'], c => ({
+            seq: [['martinez', p.name + ' queda bajo mi seguimiento. Le aviso ante cualquier cambio.']], next: null
+          }))
+        ];
+      }
+    }
+  },
+
+  // ---------- AMBULANCIAS ----------
+  ambulance: {
+    prio: 2,
+    intro: d => {
+      const a = state.ambulances.find(x => x.id === d.amb) || state.ambulances.find(x => x.status === 'en_ruta') || state.ambulances[0];
+      d.amb = a.id;
+      return [
+        ['cruz', 'Dr. Daniel, ' + a.id + ' (' + a.crew + ') reporta un paciente grave en ruta desde ' + a.location + '. ETA aproximado: 6 min. Politrauma con hipotensión.'],
+        ['martinez', 'Emergencias tiene ' + Math.max(0, 8 - critList().length) + ' camillas libres y trauma en alerta.']
+      ];
+    },
+    nodes: {
+      start: ctx => [
+        opt('quirofano', 'Preparar quirófano', ['quirofano', 'cirug', 'operar'], c => {
+          logAction('Dr. Daniel ordenó preparar quirófano para ' + ctx.data.amb + '.');
+          return { seq: [['andrews', 'Quirófano 1 listo; me lavo y espero al paciente.'], ['ruiz', 'Anestesia preparada y sangre cruzada solicitada.']], next: 'follow' };
+        }),
+        opt('uci', 'Reservar cama en UCI', ['\\buci\\b', 'cama', 'reservar'], c => {
+          logAction('Dr. Daniel reservó cama de UCI para ' + ctx.data.amb + '.');
+          return { seq: [['sanchez', bedsPct() >= 90 ? 'UCI está al límite; la cama sale de la reserva de crisis.' : 'Cama de UCI reservada con ventilador y monitor.'], ['garcia', 'Personal asignado para recibirlo.']], next: 'follow' };
+        }),
+        opt('desviar', 'Desviar a hospital aliado', ['desviar', 'aliado', 'otro\\s+hospital', 'derivar'], c => {
+          const ally = allyFor(c);
+          addNews('🚑 ' + ctx.data.amb + ' desviada a ' + ally + ' por indicación de Dr. Daniel.');
+          logAction('Dr. Daniel desvió ' + ctx.data.amb + ' a ' + ally + '.');
+          return { seq: [['cruz', 'Contacté con ' + ally + ': aceptan al paciente, desvío en curso.'], ['andrews', 'Les envío el resumen clínico por el canal de aliados.']], next: 'follow' };
+        })
+      ],
+      follow: ctx => {
+        const u = ctx.used;
+        return [
+          !u.apoyo && opt('apoyo', 'Despachar ambulancia de apoyo', ['despach', 'otra\\s+ambulancia', 'apoyo'], c => {
+            u.apoyo = true;
+            const b = freeAmb()[0];
+            if (!b) return { seq: [['cruz', 'No quedan unidades libres; me quedo con ' + ctx.data.amb + ' hasta que regrese.']], next: 'follow' };
+            b.status = 'en_ruta'; b.location = 'Zona Centro';
+            setTimeout(() => { b.status = 'disponible'; b.location = 'Base Hospital'; updateAmbulances(); }, 18000);
+            updateAmbulances();
+            return { seq: [['cruz', b.id + ' (' + b.crew + ') despachada como apoyo.']], next: 'follow' };
+          }),
+          !u.recep && opt('recep', 'Confirmar recepción en Emergencias', ['recep', 'confirm', 'emergencias'], c => {
+            u.recep = true;
+            return { seq: [['martinez', 'Box de trauma preparado y equipo de transfusión en espera.']], next: 'follow' };
+          }),
+          opt('tanto', 'Mantenerme al tanto', ['tanto', 'informad', 'aviso', 'listo'], c => ({
+            seq: [['cruz', ctx.data.amb + ' llega en unos 3 minutos; le aviso en cuanto aterrice en la bahía.']], next: null
+          }))
+        ];
+      }
+    }
+  },
+
+  // ---------- CIRUGÍAS / BIOPSIAS ----------
+  surgery: {
+    prio: 1,
+    intro: d => {
+      const bio = d.kind === 'biopsia';
+      return [
+        bio ? ['shaun', 'Dr. Daniel, detecté un caso inusual de ' + d.name + ' en UCI. Necesito su autorización para una biopsia urgente.']
+            : ['andrews', 'Dr. Daniel, la cirugía de ' + d.name + ' está programada para esta tarde. Quirófano 1 listo. ¿La autoriza?'],
+        ['ruiz', 'Anestesia disponible; solo falta su visto bueno.']
+      ];
+    },
+    nodes: {
+      start: ctx => surgOpts(ctx, true),
+      start2: ctx => surgOpts(ctx, false),
+      follow2: ctx => [
+        surgAuth(ctx),
+        opt('mantener', 'Mantener la posposición', ['mantener', 'sigan', 'dejen'], c => ({ seq: [['garcia', 'Queda para dentro de una hora; lo registro en el parte.']], next: null }))
+      ],
+      follow: ctx => [
+        opt('parte', 'Pedir parte quirúrgico', ['parte', 'informe', 'resultado'], c => ({
+          seq: [['andrews', 'Parte: ' + (ctx.data.kind === 'biopsia' ? 'muestra tomada sin complicaciones; patología en unas 2 horas' : 'procedimiento sin complicaciones; paciente a recuperación') + '.'], ['garcia', 'Enfermería lo recibe en recuperación.']], next: null
+        })),
+        opt('orden', 'Todo en orden por ahora', ['orden', 'nada\\s+mas', 'listo'], c => ({ seq: [['andrews', 'Perfecto; le informo del resultado en cuanto salga del procedimiento.']], next: null }))
+      ]
+    }
+  },
+
+  // ---------- CAMAS ----------
+  beds: {
+    prio: 1,
+    intro: d => {
+      const occ = d.occ || bedsPct();
+      return [
+        ['sanchez', 'Dr. Daniel, UCI al ' + occ + '% de ocupación. ¿Habilitamos camas adicionales?'],
+        occ >= 85 ? ['garcia', 'Enfermería puede cubrir 4 camas más si reasignamos personal de Hospitalización.'] : ['andrews', 'Tenemos margen, pero la tendencia va en aumento.']
+      ];
+    },
+    nodes: {
+      start: ctx => bedOpts(ctx, true),
+      start2: ctx => bedOpts(ctx, false),
+      follow: ctx => [
+        opt('derivar', 'Derivar un paciente a hospital aliado', ['deriv', 'aliado', 'traslad'], c => {
+          const ally = allyFor(c);
+          const p = state.patients.find(x => x.status !== 'crítico');
+          if (!p) return { seq: [['sanchez', 'No hay pacientes trasladables sin riesgo ahora mismo.']], next: null };
+          state.patients = state.patients.filter(x => x.id !== p.id);
+          addNews('🚑 ' + p.name + ' trasladado a ' + ally + ' para liberar cama.');
+          logAction('Dr. Daniel derivó a ' + p.name + ' a ' + ally + ' para liberar capacidad.');
+          updateDashboard();
+          return { seq: [['andrews', ally + ' acepta recibir a ' + p.name + '.'], ['cruz', 'Traslado coordinado; la cama queda libre en 15 minutos.']], next: null };
+        }),
+        opt('monitor', 'Mantener monitoreo', ['monitor', 'mantener', 'seguir'], c => ({ seq: [['sanchez', 'Reviso la ocupación cada hora y le aviso si pasamos del 95%.']], next: null }))
+      ]
+    }
+  },
+
+  // ---------- BANCO DE SANGRE ----------
+  blood: {
+    prio: 2,
+    intro: d => {
+      const bt = d.bt || lowBlood()[0] || 'O-';
+      d.bt = bt;
+      return [
+        ['garcia', 'Dr. Daniel, banco de sangre: ' + bt + ' en ' + state.blood[bt] + ' U, nivel crítico.'],
+        ['shaun', 'Con las cirugías previstas el consumo se dispara; no alcanzaría para un politrauma.']
+      ];
+    },
+    nodes: {
+      start: ctx => {
+        const bt = ctx.data.bt;
+        return [
+          opt('donantes', 'Convocar donantes', ['donante', 'convoc', 'llamamiento'], c => {
+            state.blood[bt] += 6; updateBancoSangre();
+            logAction('Dr. Daniel convocó donantes de ' + bt + ' (+6 U).');
+            return { seq: [['garcia', 'Llamamiento lanzado: llegan 6 U de ' + bt + ' en la próxima hora.'], ['jimenez', 'Habilito la sala de extracción en el ala norte.']], next: 'follow' };
+          }),
+          opt('aliado', 'Pedir sangre a hospital aliado', ['aliado', 'pedir\\s+sangre', 'otro\\s+hospital'], c => {
+            const ally = allyFor(c);
+            state.blood[bt] += 10; updateBancoSangre();
+            logAction('Dr. Daniel pidió sangre ' + bt + ' a ' + ally + ' (+10 U).');
+            return { seq: [['andrews', ally + ' enviará 10 U de ' + bt + '.'], ['cruz', 'Una ambulancia recoge el cargamento refrigerado.']], next: 'follow' };
+          }),
+          opt('posponer', 'Posponer cirugías no urgentes', ['pospon', 'cirugias', 'no\\s+urgente'], c => {
+            state.blood[bt] += 3; updateBancoSangre();
+            state.reputation = Math.max(0, state.reputation - 0.3);
+            logAction('Dr. Daniel pospuso cirugías no urgentes para ahorrar ' + bt + '.');
+            return { seq: [['torres', 'Pospongo las cirugías no urgentes de hoy; ahorramos unas 3 U.'], ['andrews', 'Las familias fueron avisadas de la reprogramación.']], next: 'follow' };
+          })
+        ];
+      },
+      follow: ctx => [
+        opt('inventario', 'Verificar inventario', ['inventario', 'verific', 'niveles', 'stock'], c => ({
+          seq: [['garcia', 'Inventario: ' + invLine() + '.'], ['shaun', state.blood[ctx.data.bt] < 8 ? 'Sigue por debajo de lo seguro; convendría otra medida.' : 'Nivel ya suficiente para operar con tranquilidad.']], next: 'follow'
+        })),
+        opt('cerrar', 'Cerrar el tema', ['cerrar', 'listo', 'nada\\s+mas', 'basta'], c => ({ seq: [['garcia', 'Vigilo el inventario cada hora y le aviso de cualquier variación.']], next: null }))
+      ]
+    }
+  },
+
+  // ---------- SOLICITUD DE HOSPITAL ALIADO ----------
+  ally: {
+    prio: 1,
+    intro: (d, ctx) => {
+      d.ally = d.ally || allyFor(ctx);
+      d.req = d.req || 'solicita una cama UCI';
+      return [
+        ['andrews', d.ally + ' ' + d.req + '. ¿Cómo procedemos, Dr. Daniel?'],
+        ['garcia', 'Nuestra capacidad actual: ' + statusLine() + '.']
+      ];
+    },
+    nodes: {
+      start: ctx => [
+        opt('aceptar', 'Aceptar solicitud', ['acept', '\\bsi\\b', 'apoyar'], c => {
+          state.reputation = Math.min(100, state.reputation + 0.5);
+          if (/sangre/.test(ctx.data.req)) { state.blood['O-'] = Math.max(2, state.blood['O-'] - 3); updateBancoSangre(); }
+          logAction('Dr. Daniel aceptó la solicitud de ' + ctx.data.ally + ' (' + ctx.data.req + ').');
+          return { seq: [['andrews', 'Confirmo con ' + ctx.data.ally + ': aceptamos y coordinamos la recepción.'], ['cruz', /sangre/.test(ctx.data.req) ? 'Preparo el envío de sangre O- con cadena de frío.' : 'Preparo ambulancia y camilla para la recepción.']], next: 'follow' };
+        }),
+        opt('declinar', 'Declinar por recursos', ['declin', 'rechaz', 'no\\s+podemos', 'recursos'], c => {
+          state.reputation = Math.max(0, state.reputation - 0.3);
+          logAction('Dr. Daniel declinó la solicitud de ' + ctx.data.ally + ' por falta de recursos.');
+          return { seq: [['andrews', 'Informo a ' + ctx.data.ally + ' que no tenemos capacidad ahora; les sugiero otro aliado.'], ['garcia', 'Dejo constancia en el registro de traslados.']], next: 'later' };
+        }),
+        opt('condiciones', 'Aceptar con condiciones', ['condicion', 'pero', 'siempre\\s+que'], c => ({
+          seq: [['andrews', 'Buena idea. ¿Qué condiciones planteamos a ' + ctx.data.ally + '?']], next: 'cond'
+        }))
+      ],
+      follow: ctx => [
+        !ctx.used.amb && opt('ambulancia', 'Enviar ambulancia', ['ambulancia', 'enviar'], c => {
+          ctx.used.amb = true;
+          const b = freeAmb()[0];
+          if (!b) return { seq: [['cruz', 'No quedan ambulancias libres; coordinaré con su transporte.']], next: 'follow' };
+          b.status = 'en_ruta'; b.location = ctx.data.ally;
+          setTimeout(() => { b.status = 'disponible'; b.location = 'Base Hospital'; updateAmbulances(); }, 18000);
+          updateAmbulances();
+          return { seq: [['cruz', b.id + ' sale hacia ' + ctx.data.ally + '.']], next: 'follow' };
+        }),
+        opt('cerrar', 'Dar por cerrado', ['cerrar', 'cerrado', 'listo'], c => ({ seq: [['andrews', 'Cerrado. Registro el acuerdo con ' + ctx.data.ally + '.']], next: null }))
+      ],
+      later: ctx => [
+        opt('reevaluar', 'Reevaluar en una hora', ['reevalu', 'hora', 'mas\\s+tarde'], c => ({ seq: [['andrews', 'Quedo pendiente de la ocupación y vuelvo a hablar con ' + ctx.data.ally + ' en una hora.']], next: null })),
+        opt('dejar', 'Dejarlo así', ['dejar', 'asi', 'nada\\s+mas'], c => ({ seq: [['garcia', 'Queda cerrado y registrado.']], next: null }))
+      ],
+      cond: ctx => [
+        opt('transporte', 'Exigir transporte propio', ['transporte', 'ambulancia'], c => condDone(ctx, 'ellos aportan el transporte')),
+        opt('limite', 'Limitar a 24 horas', ['24', 'horas', 'limitar'], c => condDone(ctx, 'la estancia se limita a 24 horas')),
+        opt('intercambio', 'Pedir intercambio de especialista', ['intercambio', 'especialista'], c => condDone(ctx, 'nos prestan un especialista a cambio'))
+      ]
+    }
+  },
+
+  // ---------- CONTACTO CON ALIADO ----------
+  allyContact: {
+    prio: 1,
+    intro: d => [['andrews', 'Dr. Daniel, en contacto con ' + d.ally + '. ¿Qué recursos necesita compartir?']],
+    nodes: {
+      start: ctx => [
+        opt('paciente', 'Enviar paciente', ['paciente', 'enviar', 'traslad'], c => {
+          const p = state.patients.find(x => x.status === 'estable') || state.patients.find(x => x.status !== 'crítico');
+          if (!p) return { seq: [['andrews', 'No hay pacientes estables que podamos trasladar con seguridad.']], next: null };
+          state.patients = state.patients.filter(x => x.id !== p.id);
+          addNews('🚑 ' + p.name + ' trasladado a ' + ctx.data.ally + '.');
+          logAction('Dr. Daniel envió a ' + p.name + ' a ' + ctx.data.ally + '.');
+          updateDashboard();
+          return { seq: [['andrews', ctx.data.ally + ' acepta a ' + p.name + ' (' + p.diagnosis + ').'], ['cruz', 'Ambulancia asignada; salida en 10 minutos.']], next: null };
+        }),
+        opt('especialista', 'Solicitar especialista', ['especialista', 'medico', 'doctor'], c => {
+          logAction('Dr. Daniel solicitó un especialista a ' + ctx.data.ally + '.');
+          return { seq: [['andrews', ctx.data.ally + ' enviará un especialista en menos de una hora.'], ['garcia', 'Preparo credenciales y área de trabajo.']], next: null };
+        }),
+        opt('sangre', 'Compartir sangre', ['sangre', 'compartir', 'unidades'], c => {
+          const best = Object.entries(state.blood).sort((a, b) => b[1] - a[1])[0];
+          state.blood[best[0]] = Math.max(2, best[1] - 5); updateBancoSangre();
+          logAction('Dr. Daniel compartió 5 U de ' + best[0] + ' con ' + ctx.data.ally + '.');
+          return { seq: [['garcia', 'Envío 5 U de ' + best[0] + ', el grupo con más reservas.'], ['andrews', ctx.data.ally + ' agradece el gesto y quedan en deuda con nosotros.']], next: null };
+        })
+      ]
+    }
+  },
+
+  // ---------- VIP ----------
+  vip: {
+    prio: 1,
+    intro: d => [['andrews', 'Dr. Daniel, ' + d.who + ' ha llegado al hospital. ¿Activamos protocolo VIP?'], ['garcia', 'Hay prensa en la entrada principal.']],
+    nodes: {
+      start: ctx => [
+        opt('vip', 'Activar protocolo VIP', ['vip', 'activar', '\\bsi\\b'], c => {
+          logAction('Dr. Daniel activó protocolo VIP para ' + ctx.data.who + '.');
+          return { seq: [['garcia', 'Suite privada preparada y acceso restringido.'], ['shaun', 'Me encargo personalmente del diagnóstico.']], next: 'follow' };
+        }),
+        opt('estandar', 'Tratamiento estándar', ['estandar', 'normal', 'igual'], c => {
+          state.reputation = Math.min(100, state.reputation + 0.4);
+          logAction('Dr. Daniel ordenó tratamiento estándar para ' + ctx.data.who + '.');
+          return { seq: [['martinez', 'Lo atendemos como a cualquier paciente, sin privilegios.'], ['garcia', 'Pasa por triaje normal; informo a su equipo.']], next: 'follow' };
+        }),
+        opt('elite', 'Asignar médico de élite', ['elite', 'asignar', 'medico'], c => {
+          logAction('Dr. Daniel asignó médico de élite a ' + ctx.data.who + '.');
+          return { seq: [['braun', 'Yo me ocupo del caso; evalúo en Emergencias.'], ['shaun', 'Quedo disponible como segundo diagnóstico.']], next: 'follow' };
+        })
+      ],
+      follow: ctx => [
+        opt('prensa', 'Informar a prensa', ['prensa', 'informar', 'comunicado'], c => ({ seq: [['andrews', 'Preparo un comunicado breve, sin datos clínicos.']], next: null })),
+        opt('discrecion', 'Mantener discreción total', ['discrec', 'privacidad', 'nada'], c => ({ seq: [['garcia', 'Cierro la entrada de prensa y reforzamos la seguridad.']], next: null }))
+      ]
+    }
+  },
+
+  // ---------- ACCIDENTE MASIVO ----------
+  mass: {
+    prio: 2,
+    intro: d => [
+      ['braun', 'Dr. Daniel, accidente masivo confirmado: ' + (d.n || 10) + ' pacientes críticos. Activando triaje en Emergencias.'],
+      ['martinez', 'Estamos desbordados en Emergencias; necesito su orden.']
+    ],
+    nodes: {
+      start: ctx => [
+        opt('protocolo', 'Activar protocolo de emergencia múltiple', ['protocolo', 'activar', 'multiple'], c => {
+          state.staff.slice(0, 4).forEach(s => { s.area = 'Emergencias'; s.status = 'Atendiendo paciente'; });
+          state.reputation = Math.min(100, state.reputation + 0.5);
+          logAction('Dr. Daniel activó el protocolo de emergencia múltiple.');
+          return { seq: [['braun', 'Protocolo activo: cuatro médicos reasignados a Emergencias.'], ['cruz', 'Camillas y triaje en el acceso.']], next: 'follow' };
+        }),
+        opt('aliados', 'Pedir apoyo a hospitales aliados', ['aliado', 'apoyo', 'derivar'], c => {
+          addNews('🏥 Se solicitó apoyo a los hospitales aliados por el accidente masivo.');
+          logAction('Dr. Daniel pidió apoyo a los hospitales aliados por el accidente masivo.');
+          return { seq: [['andrews', ALLY_HOSPITALS[0] + ' y ' + ALLY_HOSPITALS[1] + ' reciben a los casos menos graves.'], ['cruz', 'Dos ambulancias aliadas ya están en camino.']], next: 'follow' };
+        }),
+        opt('sala', 'Habilitar sala temporal', ['sala', 'temporal', 'habilitar'], c => {
+          state.extraBeds = (state.extraBeds || 0) + 6; updateDashboard();
+          logAction('Dr. Daniel habilitó una sala temporal (+6 camas).');
+          return { seq: [['garcia', 'Sala temporal lista: 6 camas más con monitor.'], ['lima', 'Traslado material desde Maternidad.']], next: 'follow' };
+        })
+      ],
+      follow: ctx => [
+        opt('prioridades', 'Pedir lista de prioridades', ['prioridad', 'lista', 'triaje'], c => {
+          const top = critList().slice(0, 3).map(p => p.name).join(', ');
+          return { seq: [['martinez', 'Prioridad uno: ' + (top || 'sin casos críticos') + '. El resto, por orden de triaje.']], next: null };
+        }),
+        opt('refuerzo', 'Llamar personal de descanso', ['descanso', 'refuerzo', 'llamar'], c => {
+          state.staff.slice(5, 8).forEach(s => { s.area = 'Emergencias'; s.status = 'Atendiendo paciente'; });
+          logAction('Dr. Daniel llamó a personal de descanso por el accidente masivo.');
+          return { seq: [['garcia', 'Tres profesionales de descanso se incorporan en 10 minutos.']], next: null };
+        })
+      ]
+    }
+  },
+
+  // ---------- RESUMEN GENERAL (respuesta a texto libre) ----------
+  brief: {
+    prio: 1,
+    intro: () => [],
+    nodes: {
+      start: ctx => [
+        opt('crit', 'Ver pacientes críticos', ['critic', 'grave', 'paciente'], c => ({ seq: TOPIC_MAKERS.critical().seq, next: 'start' })),
+        opt('amb', 'Revisar ambulancias', ['ambulanc', 'flota'], c => ({ seq: TOPIC_MAKERS.ambulance().seq, next: 'start' })),
+        opt('sangre', 'Revisar banco de sangre', ['sangre', 'banco'], c => ({ seq: TOPIC_MAKERS.blood().seq, next: 'start' })),
+        opt('nada', 'Nada más por ahora', ['nada', 'listo', 'basta'], c => ({ seq: [['shaun', 'Sin novedades que requieran su decisión; seguimos atentos.']], next: null }))
+      ]
+    }
+  }
+};
+
+// Auxiliares de conversaciones con opciones compartidas
+function surgAuth(ctx) {
+  const d = ctx.data, bio = d.kind === 'biopsia';
+  return opt('auth', 'Autorizar ' + (bio ? 'biopsia' : 'cirugía'), ['autoriz', 'adelante', '\\bsi\\b', 'proced', 'aprueb'], c => {
+    if (!bio) state.stats.surgeries++;
+    state.reputation = Math.min(100, state.reputation + 0.3);
+    logAction('Dr. Daniel autorizó ' + (bio ? 'la biopsia' : 'la cirugía') + ' de ' + d.name + '.');
+    return { seq: bio
+      ? [['shaun', 'Biopsia autorizada; extracción en 20 minutos y patología en unas 2 horas.'], ['ruiz', 'Sedación lista.']]
+      : [['andrews', 'Autorizada: entramos a Quirófano 1 ahora.'], ['ruiz', 'Anestesia inducida; signos estables.']], next: 'follow' };
+  });
+}
+function surgOpts(ctx, withReview) {
+  const d = ctx.data, bio = d.kind === 'biopsia';
+  const list = [
+    surgAuth(ctx),
+    opt('posponer', 'Posponer una hora', ['pospon', 'espera', 'mas\\s+tarde', 'una\\s+hora', 'despues'], c => {
+      logAction('Dr. Daniel pospuso una hora ' + (bio ? 'la biopsia' : 'la cirugía') + ' de ' + d.name + '.');
+      return { seq: [
+        ['torres', 'Reprogramado una hora; uso el quirófano para una cirugía menor mientras tanto.'],
+        bio ? ['shaun', 'Dejo vigilancia estrecha; si empeora le aviso para adelantarla.'] : ['andrews', 'Si el paciente se complica, lo adelantamos de inmediato.']
+      ], next: 'follow2' };
+    })
+  ];
+  if (withReview) list.push(opt('revisar', 'Revisar expediente primero', ['expediente', 'revis', 'historial', 'historia'], c => {
+    const p = state.patients.find(x => x.name === d.name);
+    return { seq: [
+      ['shaun', p ? 'Resumen de ' + p.name + ': ' + p.age + ' años; ' + p.diagnosis + '; FC ' + p.hr + ', SpO₂ ' + p.spo2 + '%; estado ' + p.status + '.' : 'Expediente sin contraindicaciones; estudios previos normales.'],
+      ['ruiz', 'Sin alergias ni contraindicaciones anestésicas registradas.']
+    ], next: 'start2' };
+  }));
+  return list;
+}
+function bedOpts(ctx, withInfo) {
+  const occ = ctx.data.occ || bedsPct();
+  const list = [
+    opt('habilitar', 'Habilitar camas adicionales', ['habilit', '\\bsi\\b', 'adicional', 'abrir'], c => {
+      state.extraBeds = (state.extraBeds || 0) + 4; updateDashboard();
+      logAction('Dr. Daniel habilitó 4 camas adicionales de UCI.');
+      return { seq: [['garcia', '4 camas habilitadas; la capacidad de UCI sube a ' + bedCap() + '.'], ['andrews', 'Reasigné personal de Hospitalización para cubrirlas.']], next: 'follow' };
+    }),
+    opt('no', 'No por ahora', ['no\\s+por\\s+ahora', '\\bno\\b', 'espera', 'posponer'], c => {
+      if (occ > 90) state.reputation = Math.max(0, state.reputation - 0.4);
+      return { seq: [['sanchez', occ >= 90 ? 'Entendido, pero estamos al límite; si entra otro crítico tendremos que derivar.' : 'De acuerdo; monitoreamos la ocupación cada hora.'], ['andrews', 'Dejo preparado el plan de contingencia por si sube.']], next: 'follow' };
+    })
+  ];
+  if (withInfo) list.push(opt('info', 'Dame más información', ['informacion', 'detalle', 'datos', 'por\\s+que'], c => ({
+    seq: [['sanchez', 'UCI: ' + critList().length + ' críticos para ' + bedCap() + ' camas; hay ' + Math.max(0, Math.floor(critList().length / 4)) + ' altas posibles hoy.'], ['garcia', 'Personal para extender: 4 enfermeros reasignables desde Hospitalización.']], next: 'start2'
+  })));
+  return list;
+}
+function condDone(ctx, txt) {
+  state.reputation = Math.min(100, state.reputation + 0.3);
+  logAction('Dr. Daniel aceptó la solicitud de ' + ctx.data.ally + ' con condiciones: ' + txt + '.');
+  return { seq: [['andrews', ctx.data.ally + ' acepta: ' + txt + '.'], ['cruz', 'Registro el acuerdo y coordino la logística.']], next: null };
+}
+
+// ========== SANDBOX ==========
+function sbEvent(evt) {
+  switch (evt) {
+    case 'code_blue': activateCB('UCI-SANDBOX'); break;
+    case 'mass':
+      for (let i = 0; i < 10; i++) {
+        const p = makePatient(); p.status = 'crítico'; state.patients.unshift(p); state.stats.admissions++;
+      }
+      notify('💥 ACCIDENTE MASIVO — 10 pacientes críticos ingresados', 'urgent');
+      offerConvo('mass', { n: 10 }, { force: true });
+      addNews('💥 ACCIDENTE MASIVO — 10 pacientes ingresados en emergencias.');
+      updateDashboard(); updatePacientes(); break;
+    case 'birth': addBirth(Math.random() > 0.5); break;
+    case 'newpac': { const p = makePatient(); p.status='crítico'; state.patients.unshift(p); state.stats.admissions++; triggerDecisionModal(p); notify('🚑 Nuevo paciente de emergencia crítico','urgent'); break; }
+    case 'blood': state.blood['O-'] = 3; updateBancoSangre(); notify('🩸 Sangre O- CRÍTICA — Solo 3 unidades', 'urgent'); offerConvo('blood', { bt: 'O-' }, { force: true }); break;
+    case 'vip':
+      const vips = ['El Alcalde de la ciudad','Un futbolista internacional','Un empresario reconocido','Un diplomático extranjero'];
+      const v = vips[Math.floor(Math.random()*vips.length)];
+      notify('👑 PACIENTE VIP: ' + v, 'warn');
+      offerConvo('vip', { who: v }, { force: true });
+      addNews('👑 PACIENTE VIP: ' + v + ' ingresó al hospital.'); break;
+    case 'storm': document.getElementById('wx-badge').textContent = '⛈️ Tormenta'; notify('⛈️ Tormenta — Mayor riesgo de accidentes', 'warn'); setTimeout(() => document.getElementById('wx-badge').textContent = '☀️ Despejado', 15000); break;
+    case 'ally': allyRequest(); break;
+  }
+}
+
+function simSh(shift) {
+  state.simShift = shift;
+  updateClock();
+  notify('⏰ Turno simulado: ' + (shift === 'day' ? 'Diurno' : shift === 'night' ? 'Nocturno' : 'Hora real'), '');
+}
+
+// ========== SECTION NAVIGATION ==========
+function showSec(sec, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + sec).classList.add('active');
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (sec === 'pacientes') updatePacientes();
+  if (sec === 'personal') updatePersonal();
+  if (sec === 'ambulancias') updateAmbulances();
+  if (sec === 'maternidad') updateMaternidad();
+  if (sec === 'sangre') updateBancoSangre();
+  if (sec === 'aliados') updateAliados();
+  if (sec === 'logros') updateLogros();
+  if (sec === 'periodico') updatePeriodico();
+  if (sec === 'monitores') { updateMonitorSelect(); initWaves(); }
+  if (sec === 'chat') { updateChat(); renderChatOpts(); }
+  if (sec === 'crisis') renderCrisis();
+}
+
+// ========== NOTIFY ==========
+function notify(text, type) {
+  const wrap = document.getElementById('nwrap');
+  const el = document.createElement('div');
+  el.className = 'notif ' + (type || '');
+  el.innerHTML = `<div class="ntit">${text}</div>`;
+  el.onclick = () => el.remove();
+  wrap.appendChild(el);
+  setTimeout(() => { if (el.parentNode) el.remove(); }, 5500);
+  while (wrap.children.length > 6) wrap.removeChild(wrap.firstChild);
+}
+
+// ========== HELPERS ==========
+function tNow() { return new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }); }
+function sbHTML(s) {
+  const m = { 'crítico': '🔴 Crítico', 'observación': '🟡 Observación', 'estable': '🟢 Estable' };
+  const c = { 'crítico': 'critico', 'observación': 'observacion', 'estable': 'estable' };
+  return `<span class="sb ${c[s] || 'estable'}">${m[s] || s}</span>`;
+}
+
+document.getElementById('chat-in').addEventListener('keydown', e => { if (e.key === 'Enter') sendMsg(); });
+window.addEventListener('load', init);
+</script>
+</body>
+</html>
